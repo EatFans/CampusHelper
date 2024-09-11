@@ -1,0 +1,41 @@
+/* pages/orders/orders.wxss */
+page {
+  box-sizing: border-box;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 96rpx);
+  background: #EDECF3FF;
+}
+
+.orders-page-header {
+  height: auto;
+  /* background: white; */
+  margin-top: 100px;
+}
+
+.order-filter-bar {
+  width: 100%;
+  height: 38px;
+  background: white;
+  margin: 5px auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.order-filter-bar-weiwanchen-button, .order-filter-bar-yiwanchen-button {
+  margin: 0 auto;
+}
+
+/* 普通颜色样式 */
+.text-normal {
+  color: black;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 点击后变成蓝色 */
+.text-blue {
+  color: #1296db;
+  font-size: 14px;
+  font-weight: 500;
+}

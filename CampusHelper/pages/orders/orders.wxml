@@ -1,0 +1,24 @@
+<!--我的任务界面-->
+<scroll-view>
+  <view class="orders-page-header">
+    <!--我的任务界面搜索-->
+    <view class="orders-page-search">
+      <orderSearch placeholder="搜索订单" ></orderSearch>
+    </view>
+    <!--我的任务筛选栏-->
+    <view class="order-filter-bar">
+        <view class="order-filter-bar-weiwanchen-button" bind:tap="toggleOrderFilterBarWeiWanChenButtonStatus">
+          <text class="{{isOrderFilterBarWeiWanChenButtonClicked ? 'text-blue' : 'text-normal'}}">未完成</text>
+        </view>
+        <view class="order-filter-bar-yiwanchen-button" bind:tap="toggleOrderFilterBarYiWanChenButtonStatus">
+          <text class="{{isOrderFilterBarYiWanChenButtonClicked ? 'text-blue' : 'text-normal'}}">已完成</text>
+        </view>
+    </view>
+
+  </view>
+
+  <view class="orders-page-body">
+    <order-weiwanchen wx:if="{{isOrderFilterBarWeiWanChenButtonClicked}}"></order-weiwanchen>
+    <order-yiwanchen wx:if="{{isOrderFilterBarYiWanChenButtonClicked}}"></order-yiwanchen>
+  </view>
+</scroll-view>

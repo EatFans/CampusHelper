@@ -1,0 +1,48 @@
+<!--我的界面-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="mine-page-header">
+    <!--没有登录的情况-->
+    <view wx:if="{{!isLogin}}" class="header-user-info-box">
+      <view class="user-info-avatar-wrapper">
+        <image src="https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0" mode="aspectFill"></image>
+      </view>
+      <text class="not-login-text" bind:tap="onLoginTap">点击登录</text>
+    </view>
+    <!--登录的情况-->
+    <view wx:if="{{isLogin}}" class="header-user-info-box">
+      <view class="user-info-avatar-wrapper">
+        <image src="{{user.avatarUrl}}" mode="aspectFill"></image>
+      </view>
+      <view class="user-info-text-box">
+        <!--第一行-->
+        <view class="user-info-text-box-row">
+          <text class="user-info-username">{{user.name}}</text>
+          <view wx:if="{{userInfo.hasRealNameAuthentication}}" class="real-name-authentication-label">
+            <text>已实名认证</text>
+          </view>
+          <view wx:if="{{!userInfo.hasRealNameAuthentication}}" class="real-name-authentication-label">
+            <text>未实名认证</text>
+          </view>
+        
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="mine-page-body">
+    <text bind:tap="test">点击我</text>
+    <!--常用工具容器-->
+    <view class="commonly-used-tools-container">
+      <view class="commonly-used-tools">
+
+      </view>
+    </view>
+
+    <!--我的服务容器-->
+    <view class="my-services-container">
+      <view class="my-services">
+
+      </view>
+    </view>
+  </view>
+</scroll-view>

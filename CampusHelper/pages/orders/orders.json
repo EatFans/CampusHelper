@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "orderSearch": "/components/search/orderSearch/orderSearch",
+    "order-weiwanchen": "/components/order/order-weiwanchen/order-weiwanchen",
+    "order-yiwanchen": "/components/order/order-yiwanchen/order-yiwanchen"
+  },
+  "navigationBarTitleText": "我的任务"
+}

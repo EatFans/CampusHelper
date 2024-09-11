@@ -1,0 +1,7 @@
+<!--components/search/tasksSearch/tasksSearch.wxml-->
+<view class="tasks-search-container">
+  <view class="tasks-search-icon">
+    <image src="../../../images/tasksImage/search.png" mode="aspectFill"></image>
+  </view>
+  <input type="text" class="tasks-search-input" placeholder="{{placeholder}}" value="{{inputedText}}"/>
+</view>

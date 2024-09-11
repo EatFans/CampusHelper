@@ -1,0 +1,107 @@
+<!--pages/home/home.wxml  主页界面-->
+<scroll-view class="scrollarea" scroll-y type="list">
+<!--学校定位信息-->
+<view class="university-info-box">
+  <view class="university-info-icon">
+    <image src="../../images/homeImages/location.png" mode="aspectFill"/>
+  </view>
+  <text>南通职业大学</text>
+</view>
+<!--顶部区域部分-->
+<view class="home-page-header">
+  <!--轮播图-->
+  <view class="header-image">
+    <image src="../../images/homeImages/test.jpg" mode="aspectFill"></image>
+  </view>
+  <!--宣传语-->
+  <view class="news-text-box">
+    <view class="news-text-box-icon">
+      <image src="../../images/homeImages/sound.png" mode="aspectFill"></image>
+    </view>
+    <text>{{newsText}}</text>
+  </view>
+  <!--功能菜单栏-->
+  <view class="header-menu">
+    <!--菜单第一行-->
+    <view class="header-menu-row">
+      <!--代取外卖功能按钮-->
+      <view class="header-menu-item">
+        <view class="header-menu-item-icon">
+          <image src="../../images/homeMenuIcon/takeaway.png" mode="aspectFill"></image>
+        </view>
+        <text>代取外卖</text>
+      </view>
+      <!--代取快递功能按钮-->
+      <view class="header-menu-item">
+        <view class="header-menu-item-icon">
+          <image src="../../images/homeMenuIcon/pick_up_the_courier.png" mode="aspectFill"></image>
+        </view>
+        <text>代取快递</text>
+      </view>
+      <!--代寄快递功能按钮-->
+      <view class="header-menu-item">
+        <view class="header-menu-item-icon">
+          <image src="../../images/homeMenuIcon/send_courier.png" mode="aspectFill"></image>
+        </view>
+        <text>代寄快递</text>
+      </view>
+      <!--万能任务-->
+      <view class="header-menu-item">
+        <view class="header-menu-item-icon">
+          <image src="../../images/homeMenuIcon/versatile_quest.png" mode="aspectFill"></image>
+        </view>
+        <text>全能任务</text>
+      </view>
+    </view>
+    <!--菜单第二行-->
+    <view class="header-menu-row">
+      <view class="header-menu-item">
+        <view class="header-menu-item-icon">
+          <image src="../../images/homeMenuIcon/recommend.png" mode="aspectFill"></image>
+        </view>
+        <text>精品推荐</text>
+      </view>
+      <view class="header-menu-item">
+        <view class="header-menu-item-icon">
+          <image src="../../images/homeMenuIcon/lost_and_found.png" mode="aspectFill"></image>
+        </view>
+        <text>失物招领</text>
+      </view>
+      <view class="header-menu-item">
+        <view class="header-menu-item-icon">
+          <image src="../../images/homeMenuIcon/flea_market.png" mode="aspectFill"></image>
+        </view>
+        <text>跳蚤市场</text>
+      </view>
+      <view class="header-menu-item">
+        <view class="header-menu-item-icon">
+          <image src="../../images/homeMenuIcon/vindicate.png" mode="aspectFill"></image>
+        </view>
+        <text>校园表白</text>
+      </view>
+    </view>
+  </view>
+</view>
+<!--主要区域部分-->
+<view class="home-page-body">
+  <!--热门圈子推荐容器-->
+  <view class="body-circle-recommendation-container">
+    <view class="circle-recommendation-title">
+      <view class="circle-recommendation-title-icon">
+        <image src="../../images/homeImages/circle_remmendcation.png" mode="aspectFill"></image>
+      </view>
+      <text>热门圈子</text>
+    </view>
+  </view>
+  <!--热门商家推荐容器-->
+  <view class="body-business-recommendation-container">
+    <view class="business-recommendation-title">
+      <view class="business-recommendation-title-icon">
+        <image src="../../images/homeImages/business_recommendation.png" mode="aspectFill"></image>
+      </view>
+      <text>商家推荐</text>
+    </view>
+  </view>
+</view>
+<text>已经到最底了</text>
+</scroll-view>

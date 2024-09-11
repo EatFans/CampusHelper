@@ -1,0 +1,7 @@
+<!--订单搜索组件-->
+<view class="order-search-container">
+  <view class="order-search-icon">
+    <image src="../../../images/tasksImage/search.png" mode="aspectFill"></image>
+  </view>
+  <input type="text" class="order-search-input" placeholder="{{placeholder}}" value="{{inputedText}}"/>
+</view>

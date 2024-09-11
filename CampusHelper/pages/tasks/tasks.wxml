@@ -1,0 +1,38 @@
+<!--pages/tasks/tasks.wxml-->
+<scroll-view>
+  <!--接单界面头部区域部分-->
+  <view class="tasks-page-header">
+    <!--接单界面的搜索框-->
+    <view class="tasks-page-search" bind:tap="navToTaskSearchPage">
+      <tasksSearch placeholder="搜索指定任务"></tasksSearch>
+    </view>    
+    <!--单子任务筛选器条 -->
+    <view class="task-filter-bar">
+      <view class="task-filter-bar-all-button" bind:tap="toggleTaskFilterAllButtonStatus">
+        <text class="{{isTaskFilterAllButtonClicked ? 'text-blue' : 'text-normal'}}" >全部</text>
+      </view>
+      <view class="task-filter-bar-waimai-button" bind:tap="toggleTaskFilterWaiMainButtonStatus">
+        <text class="{{isTaskFilterWaiMaiButtonClicked ? 'text-blue' : 'text-normal'}}">取外卖</text>
+      </view>
+      <view class="task-filter-bar-qukuaidi-button" bind:tap="toggleTaskFilterQuWaiMaiButtonStatus">
+        <text class="{{isTaskFilterQuKuaiDiButtonClicked ? 'text-blue' : 'text-normal'}}">取快递</text>
+      </view>
+      <view class="task-filter-bar-jikuaidi-button" bind:tap="toggleTaskFilterJiKuaiDiButtonStatus">
+        <text class="{{isTaskFilterJiKuaiDiButtonClicked ? 'text-blue' : 'text-normal'}}">寄快递</text>
+      </view>
+      <view class="task-filter-bar-quanneng-button" bind:tap="toggleTaskFileterQuanNengButtonStatus">
+        <text class="{{isTaskFilterQuanNengButtonClicked ? 'text-blue' : 'text-normal'}}">全能任务</text>
+      </view>
+
+    </view>
+  </view>
+
+  <!--接单界面主体区域部分-->
+  <view class="tasks-page-body">
+    <task-all wx:if="{{isTaskFilterAllButtonClicked}}" tasks="{{tasks.all}}"></task-all>
+    <task-quwaimai wx:if="{{isTaskFilterWaiMaiButtonClicked}}"></task-quwaimai>
+    <task-qukuaidi wx:if="{{isTaskFilterQuKuaiDiButtonClicked}}"></task-qukuaidi>
+    <task-jikuaidi wx:if="{{isTaskFilterJiKuaiDiButtonClicked}}"></task-jikuaidi>
+    <task-quanneng wx:if="{{isTaskFilterQuanNengButtonClicked}}"></task-quanneng>
+  </view>
+</scroll-view>

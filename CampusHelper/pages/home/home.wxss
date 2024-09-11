@@ -1,0 +1,185 @@
+/* pages/home/home.wxss */
+page {
+  box-sizing: border-box;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 96rpx);
+  background: #EDECF3FF;
+}
+
+.university-info-box {
+  width: 100%;
+  height: 100px;
+  /* border: black solid 1px; */
+  display: flex;
+  flex-direction: row;
+
+}
+
+.university-info-icon {
+  margin-top: 16%;
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.university-info-icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.university-info-box text {
+  margin-top: 16%;
+  margin-left: 5px;
+  font-weight: 600;
+}
+
+.home-page-header {
+  height: auto;
+  /* border: red solid 1px; */
+  background: white;
+  border-bottom-left-radius: 8%;
+  border-bottom-right-radius: 8%;
+}
+
+.header-image {
+  margin: 0 auto;
+  margin-top: 5px;
+  /* background: red; */
+  height: 180px;
+  width: 96%;
+  border-radius: 8px;
+}
+
+.header-image image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* 保持图片比例并填充容器 */
+  border-radius: 8px;
+}
+
+.news-text-box {
+  width: 96%;
+  height: 28px;
+  margin: 0 auto;
+  margin-top: 15px;
+  border-radius: 2px;
+  background: #F4DAD4FF;
+  display: flex;
+  align-items: center;
+}
+
+.news-text-box-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 10px;
+}
+
+.news-text-box-icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.news-text-box text {
+  margin-left: 5px;
+  font-weight: 400;
+  color: #D98572FF;
+}
+
+.header-menu {
+  width: 92%;
+  height: 180px;
+  margin: 0 auto;
+  margin-top: 15px;
+  /* border: green solid 1px; */
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-menu-row {
+  width: 100%;
+  height: 50%;
+  /* background: green; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-menu-item {
+  width: 18%;
+  height: 100%; /* 86%适合这个功能图标高度 */
+  /* background: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  margin: 0 auto;
+}
+
+.header-menu-item-icon {
+  width: 48px;
+  height: 48px;
+  background: greenyellow;
+  border-radius: 50%;
+}
+
+.header-menu-item-icon image {
+  width: 100%;
+  height: 100%;
+
+}
+
+.header-menu-item text {
+  /* margin-top: 100%; */
+  margin-top: 5px;
+  font-size: 14px;
+  font-size: 400;
+  color: black;
+}
+
+
+.home-page-body {
+  height: auto;
+  /* border: black solid 1px; */
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.body-circle-recommendation-container {
+  width: 96%; /* 96% 是测试调试没问题的，也是最合适的，其他也是固定总宽度的96% */
+  height: 200px;
+  margin: 10px auto;
+  /* border: black solid 1px; */
+}
+
+.circle-recommendation-title, .business-recommendation-title {
+  width: 100%;
+  height: 32px;
+  /* background: red; */
+  display: flex;
+  align-items: center;
+}
+
+.circle-recommendation-title-icon, .business-recommendation-title-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.circle-recommendation-title-icon image, .business-recommendation-title-icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.circle-recommendation-title text, .business-recommendation-title text {
+  margin-left: 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.body-business-recommendation-container {
+  width: 96%; /* 96% 是测试调试没问题的，也是最合适的，其他也是固定总宽度的96% */
+  height: 1000px; /* 这里设置为1000px是用于测试，实际中是使用auto自动变化容器高度 */
+  margin: 10px auto; /* 距离上一个容器10px距离，左右剧中 */
+  /* border: red solid 1px; */
+}

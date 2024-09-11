@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "tasksSearch": "/components/search/tasksSearch/tasksSearch",
+    "task-all": "/components/task/task-all/task-all",
+    "task-quwaimai": "/components/task/task-quwaimai/task-quwaimai",
+    "task-qukuaidi": "/components/task/task-qukuaidi/task-qukuaidi",
+    "task-jikuaidi": "/components/task/task-jikuaidi/task-jikuaidi",
+    "task-quanneng": "/components/task/task-quanneng/task-quanneng"
+  },
+  "navigationBarTitleText": "接单大厅"
+}

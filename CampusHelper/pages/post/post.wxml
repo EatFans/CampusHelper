@@ -1,0 +1,6 @@
+<!--post.wxml 发布页面-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="post-page-header">
+    <text>发布界面顶部部分区域</text>
+  </view>
+</scroll-view>

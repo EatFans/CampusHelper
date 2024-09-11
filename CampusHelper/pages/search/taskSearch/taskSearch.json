@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tasksSearch": "/components/search/tasksSearch/tasksSearch"
+  },
+  "navigationBarTitleText": "任务搜索"
+}
