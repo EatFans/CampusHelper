@@ -1,6 +1,8 @@
 package cn.fan.campushelperserver.controller;
 
 import cn.fan.campushelperserver.model.dao.GetTokenRequest;
+import cn.fan.campushelperserver.service.intf.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,10 +12,16 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    private final UserService userService;
+
+    @Autowired
+    public UserController(UserService userService){
+        this.userService = userService;
+    }
 
     @PostMapping("/getToken")
     public ResponseEntity<?> getToken(@RequestBody GetTokenRequest getTokenRequest){
-
-        return ResponseEntity.ok("Hello World");
+        String token = userService.getToken(getTokenRequest);
+        return ResponseEntity.ok(token);
     }
 }

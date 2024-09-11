@@ -50,9 +50,9 @@ Page({
   
 
   test(){
-    // this.setData({
-    //   isLogin: !this.data.isLogin
-    // });
+    this.setData({
+      isLogin: !this.data.isLogin
+    });
    
   },
   

@@ -20,7 +20,7 @@ App({
               code: res.code
             },
             success (res) {
-              console.log("已经将code请求到后端服务器中...，返回到的key结果为");
+              console.log("已经将code请求到后端服务器中...，返回到的key结果为"+res.data);
             }
             
           })
