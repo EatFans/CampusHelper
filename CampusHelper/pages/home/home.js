@@ -14,7 +14,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.loadSupportedUniversitiesData();
+  },
 
+  loadSupportedUniversitiesData(){
+    wx.request({
+      url: 'http://127.0.0.1:8080/university/getAllSupportedUniversities',
+      method: 'GET',
+      success: (res) => {
+      console.log("已经获取到所有支持的大学名称！");
+      this.setData({
+        universityList: res.data
+      });
+      }
+    })
   },
 
   /**

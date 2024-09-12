@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.mapper.UniversityMapper">
+<mapper namespace="cn.fan.campushelperserver.mapper.UniversityMapper">
 
     <select id="getAllUniversityNames" resultType="String">
         SELECT university FROM CampusHelper.universities
