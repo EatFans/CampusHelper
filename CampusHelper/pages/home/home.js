@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    newsText: "欢迎同学使用校园助手小程序。"
+    newsText: "欢迎同学使用校园助手小程序。",
+    universityList: [], // 学校列表
+    selectedUniversity: '请选择' // 默认选择的学校
   },
 
   /**
@@ -62,5 +64,14 @@ Page({
    */
   onShareAppMessage() {
     console.log("用户正在分享")
+  },
+
+  // 监听picker选择变化
+  onUniversityChange: function(e) {
+    const index = e.detail.value;
+    this.setData({
+      selectedUniversity: this.data.universityList[index]
+    });
+    console.log("选择的学校是: ", this.data.selectedUniversity);
   }
 })

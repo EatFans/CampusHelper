@@ -1,12 +1,18 @@
 <!--pages/home/home.wxml  主页界面-->
 <scroll-view class="scrollarea" scroll-y type="list">
 <!--学校定位信息-->
-<view class="university-info-box">
-  <view class="university-info-icon">
-    <image src="../../images/homeImages/location.png" mode="aspectFill"/>
+<picker mode="selector" range="{{universityList}}" bindchange="onUniversityChange">
+  <view class="university-info-box">
+    <view class="university-info-icon">
+      <image src="../../images/homeImages/location.png" mode="aspectFill"/>
+    </view>
+  
+    <text>{{selectedUniversity}}</text>
+    <image src="../../images/homeImages/unfold.png" mode="aspectFill"/>
   </view>
-  <text>南通职业大学</text>
-</view>
+</picker>
+
+
 <!--顶部区域部分-->
 <view class="home-page-header">
   <!--轮播图-->

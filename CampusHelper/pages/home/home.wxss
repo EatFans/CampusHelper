@@ -30,6 +30,12 @@ page {
   margin-top: 16%;
   margin-left: 5px;
   font-weight: 600;
+} 
+
+.university-info-box image {
+  margin-top: 16%;
+  width: 20px;
+  height: 20px;
 }
 
 .home-page-header {

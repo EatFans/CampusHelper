@@ -12,24 +12,20 @@ Page({
     isLogin: false,
   },
 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+    this.setData({
+      isLogin: wx.getStorageSync('isLogin')
+    })
+  },
+
   onReady(){
-    this.isLogined();
+    
   },
   
-  isLogined(){
-    const token = wx.getStorageSync('userToken');
-    if (token){
-      // 如果token存在
-      // TODO: 去检查验证token
 
-    } else {
-      // token不存在
-      console.log("还没有登录！将isLogin设置为false");
-      this.setData({
-        isLogin: false
-      });
-    }
-  },
 
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认

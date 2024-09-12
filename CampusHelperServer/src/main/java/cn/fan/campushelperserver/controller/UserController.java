@@ -19,9 +19,5 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/getToken")
-    public ResponseEntity<?> getToken(@RequestBody GetTokenRequest getTokenRequest){
-        String token = userService.getToken(getTokenRequest);
-        return ResponseEntity.ok(token);
-    }
+
 }

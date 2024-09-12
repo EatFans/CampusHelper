@@ -30,18 +30,62 @@
   </view>
 
   <view class="mine-page-body">
-    <text bind:tap="test">点击我</text>
+    <!-- <text bind:tap="test">点击我</text> -->
+    <!-- 用户数据信息容器 -->
+    <view class="user-data-info-container">
+      <view class="user-data-info">
+        <view class="user-data-info-row">
+
+          <view class="user-data-info-item">
+            <text class="user-data-info-item-value-text">0</text>
+            <text class="user-data-info-item-key-text">余额</text>
+          </view>
+
+          <view class="user-data-info-item">
+            <text class="user-data-info-item-value-text">0</text>
+            <text class="user-data-info-item-key-text">信用分</text>
+          </view>
+          
+          <view class="user-data-info-item">
+            <text class="user-data-info-item-value-text">0</text>
+            <text class="user-data-info-item-key-text">勋章</text>
+          </view>
+
+          <view class="user-data-info-item">
+            <text class="user-data-info-item-value-text">0</text>
+            <text class="user-data-info-item-key-text">关注</text>
+          </view>
+
+          <view class="user-data-info-item">
+            <text class="user-data-info-item-value-text">0</text>
+            <text class="user-data-info-item-key-text">粉丝</text>
+          </view>
+
+        </view>
+      </view>
+    </view>
+
     <!--常用工具容器-->
     <view class="commonly-used-tools-container">
       <view class="commonly-used-tools">
-
+        <view class="commonly-used-tools-title">
+          <text>常用工具</text>
+        </view>
+        <view class="commonly-used-tools-row">
+        
+        </view>
       </view>
     </view>
 
     <!--我的服务容器-->
     <view class="my-services-container">
       <view class="my-services">
-
+        <view class="my-services-title">
+          <text>我的服务</text>
+        </view>
+        <view class="my-services-row">
+        
+        </view>
       </view>
     </view>
   </view>
