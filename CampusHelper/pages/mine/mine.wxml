@@ -25,12 +25,16 @@
           </view>
         
         </view>
+        <!--第二行-->
+        <view class="user-info-text-box-row">
+          <text class="user-info-university">{{user.university}}</text>
+        </view>
       </view>
     </view>
   </view>
 
   <view class="mine-page-body">
-    <!-- <text bind:tap="test">点击我</text> -->
+    <text bind:tap="test">点击我</text>
     <!-- 用户数据信息容器 -->
     <view class="user-data-info-container">
       <view class="user-data-info">
@@ -84,7 +88,34 @@
           <text>我的服务</text>
         </view>
         <view class="my-services-row">
-        
+          <view class="my-services-item">
+            <view class="my-services-item-icon">
+              <image src="../../images/homeMenuIcon/recommend.png" mode="aspectFill"></image>
+            </view>
+            <text>待定</text>
+          </view>
+          
+          <view class="my-services-item">
+            <view class="my-services-item-icon">
+              <image src="../../images/homeMenuIcon/recommend.png" mode="aspectFill"></image>
+            </view>
+            <text>待定</text>
+          </view>
+
+          <view class="my-services-item">
+            <view class="my-services-item-icon">
+              <image src="../../images/homeMenuIcon/recommend.png" mode="aspectFill"></image>
+            </view>
+            <text>待定</text>
+          </view>
+
+          <view class="my-services-item">
+            <view class="my-services-item-icon">
+              <image src="../../images/homeMenuIcon/recommend.png" mode="aspectFill"></image>
+            </view>
+            <text>待定</text>
+          </view>
+
         </view>
       </view>
     </view>

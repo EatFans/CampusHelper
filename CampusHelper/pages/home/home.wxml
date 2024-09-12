@@ -35,28 +35,28 @@
         <view class="header-menu-item-icon">
           <image src="../../images/homeMenuIcon/takeaway.png" mode="aspectFill"></image>
         </view>
-        <text>代取外卖</text>
+        <text>待定</text>
       </view>
       <!--代取快递功能按钮-->
       <view class="header-menu-item">
         <view class="header-menu-item-icon">
           <image src="../../images/homeMenuIcon/pick_up_the_courier.png" mode="aspectFill"></image>
         </view>
-        <text>代取快递</text>
+        <text>待定</text>
       </view>
       <!--代寄快递功能按钮-->
       <view class="header-menu-item">
         <view class="header-menu-item-icon">
           <image src="../../images/homeMenuIcon/send_courier.png" mode="aspectFill"></image>
         </view>
-        <text>代寄快递</text>
+        <text>待定</text>
       </view>
       <!--万能任务-->
       <view class="header-menu-item">
         <view class="header-menu-item-icon">
           <image src="../../images/homeMenuIcon/versatile_quest.png" mode="aspectFill"></image>
         </view>
-        <text>全能任务</text>
+        <text>待定</text>
       </view>
     </view>
     <!--菜单第二行-->
@@ -65,25 +65,25 @@
         <view class="header-menu-item-icon">
           <image src="../../images/homeMenuIcon/recommend.png" mode="aspectFill"></image>
         </view>
-        <text>精品推荐</text>
+        <text>待定</text>
       </view>
       <view class="header-menu-item">
         <view class="header-menu-item-icon">
           <image src="../../images/homeMenuIcon/lost_and_found.png" mode="aspectFill"></image>
         </view>
-        <text>失物招领</text>
+        <text>待定</text>
       </view>
       <view class="header-menu-item">
         <view class="header-menu-item-icon">
           <image src="../../images/homeMenuIcon/flea_market.png" mode="aspectFill"></image>
         </view>
-        <text>跳蚤市场</text>
+        <text>待定</text>
       </view>
       <view class="header-menu-item">
         <view class="header-menu-item-icon">
           <image src="../../images/homeMenuIcon/vindicate.png" mode="aspectFill"></image>
         </view>
-        <text>校园表白</text>
+        <text>待定</text>
       </view>
     </view>
   </view>

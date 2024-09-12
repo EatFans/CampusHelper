@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    newsText: "欢迎同学使用校园助手小程序。",
+    newsText: "欢迎同学使用校园助手小程序平台。",
     universityList: [], // 学校列表
     selectedUniversity: '请选择' // 默认选择的学校
   },

@@ -6,7 +6,8 @@ Page({
     userInfo: {},
     user: {
       avatarUrl: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0',
-      name: "微信用户",
+      name: '微信用户',
+      university: '南通职业大学（钟秀校区）',
       hasRealNameAuthentication: false,
     },
     isLogin: false,
@@ -20,12 +21,6 @@ Page({
       isLogin: wx.getStorageSync('isLogin')
     })
   },
-
-  onReady(){
-    
-  },
-  
-
 
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
