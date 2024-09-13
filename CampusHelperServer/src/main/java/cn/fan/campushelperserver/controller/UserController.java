@@ -1,9 +1,7 @@
 package cn.fan.campushelperserver.controller;
 
 import cn.fan.campushelperserver.constant.consist.ResponseStatus;
-import cn.fan.campushelperserver.model.dao.ApiResponse;
-import cn.fan.campushelperserver.model.dao.CheckUserRequest;
-import cn.fan.campushelperserver.model.dao.GetTokenRequest;
+import cn.fan.campushelperserver.model.dao.*;
 import cn.fan.campushelperserver.model.entity.User;
 import cn.fan.campushelperserver.service.intf.UserService;
 import com.google.protobuf.Api;
@@ -27,11 +25,31 @@ public class UserController {
 
     @PostMapping("/checkUser")
     public ResponseEntity<?> checkUser(@RequestBody CheckUserRequest checkUserRequest){
-        User user = userService.checkUser(checkUserRequest);
+        User user = userService.checkUser(checkUserRequest.getCode());
         if (user != null){
             return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS,"用户验证成功！",user));
         } else {
             return ResponseEntity.ok(new ApiResponse(ResponseStatus.ERROR,"用户验证失败！"));
+        }
+    }
+
+    @PostMapping("/createUser")
+    public ResponseEntity<?> createUser(@RequestBody CreateUserRequest createUserRequest){
+        User user = userService.createUser(createUserRequest.getCode());
+        if (user != null){
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS,"用户创建正常!",user));
+        } else {
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.ERROR,"用户创建失败！"));
+        }
+    }
+
+    @PostMapping("/getUser")
+    public ResponseEntity<?> getUser(@RequestBody GetUserRequest getUserRequest){
+        User user = userService.getUser(getUserRequest.getToken());
+        if (user != null){
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS,"获取用户成功！",user));
+        } else {
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.ERROR,"获取用户失败，可能Token令牌已经失效！"));
         }
     }
 }

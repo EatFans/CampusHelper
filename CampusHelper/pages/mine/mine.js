@@ -4,12 +4,7 @@ const defaultAvatarUrl =
 Page({
   data: {
     userInfo: {},
-    user: {
-      avatarUrl: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0',
-      name: '微信用户',
-      university: '南通职业大学（钟秀校区）',
-      hasRealNameAuthentication: false,
-    },
+    user: {},
     isLogin: false,
   },
 
@@ -18,8 +13,10 @@ Page({
    */
   onLoad(options) {
     this.setData({
-      isLogin: wx.getStorageSync('isLogin')
+      isLogin: wx.getStorageSync('isLogin'),
+      user: wx.getStorageSync('user')
     })
+  
   },
 
   getUserProfile(e) {

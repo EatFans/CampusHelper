@@ -75,7 +75,7 @@ page {
 .real-name-authentication-label {
   height: 20px;
   width: 70px;
-  margin-left: 5px;
+  margin-left: 10px;
   font-size: 12px;
   background: #E9E9EAFF;
   border-radius: 8px;

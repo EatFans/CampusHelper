@@ -1,3 +1,4 @@
+
 // pages/home/home.js
 Page({
 
@@ -15,8 +16,38 @@ Page({
    */
   onLoad(options) {
     this.loadSupportedUniversitiesData();
+    // 获取用户的大学信息
+    const userUniversity = wx.getStorageSync('user').university;
+    // 检查用户大学是不是为null
+    if (userUniversity){
+      // 如果不是为null，将selectedUniversity设置为用户的大学
+      this.setData({selectedUniversity:userUniversity})
+    }
   },
+  
+  
 
+  /**
+   * 加载用户的大学数据信息
+   */
+  loadUserUniversityData(){
+    wx.request({
+      url: 'http://127.0.0.1:8080/user/getUserUniversity',
+      method: 'POST',
+      data: {
+        token: wx.getStorageSync('userToken')
+      },
+      success: (res) => {
+        console.log("已经获取用户保存的校园信息");
+
+      }
+    })
+  },
+  
+
+  /**
+   * 加载已经支持的校区数据
+   */
   loadSupportedUniversitiesData(){
     wx.request({
       url: 'http://127.0.0.1:8080/university/getAllSupportedUniversities',

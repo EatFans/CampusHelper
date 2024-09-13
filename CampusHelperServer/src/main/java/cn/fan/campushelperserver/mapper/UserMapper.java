@@ -5,5 +5,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserMapper {
+    void insertUser(User user);
     User findUserByOpenId(String openId);
+
+    boolean checkUuidExists(String uuid);
+
+    int getUserCount();
+
+    boolean checkNameExists(String name);
 }

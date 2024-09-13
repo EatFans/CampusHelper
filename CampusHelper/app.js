@@ -4,7 +4,11 @@ App({
   onLaunch() {
     this.userLogin();
   },
+  
 
+  /**
+   * 用户登录
+   */
   userLogin(){
     wx.login({
       success: (res) => {
@@ -47,22 +51,43 @@ App({
 
         } else {
           // 如果检查用户不存在，先创建用户到数据库后，再进行登录
-          wx.request({
-            url: 'http://127.0.0.1:8080/user/createaUser',
-            method: 'POST',
-            data: {
-              code: code
-            },
-            success: (res) => {
-              // TODO:  检查是否创建成功
-            }
-          });
+          console.log("用户不存在，正在准备创建用户");
+          this.createUserAndLogin();
 
         }
       },
       fail: (err) => {
         console.log("检查用户或创建用户失败");
       }
+    })
+  },
+
+  /**
+   * 创建用户并登录
+   */
+  createUserAndLogin(){
+    wx.login({
+      success: (res) => {
+        if (res.code){
+          wx.request({
+            url: 'http://127.0.0.1:8080/user/createUser',
+            method: 'POST',
+            data: {
+              code: res.code
+            },
+            success: (createUserRes) => {
+              if (createUserRes.data.status == 'success'){
+                console.log("创建用户成功！用户信息：");
+                console.log(createUserRes.data);
+                this.loginAndSaveToken();
+              }
+            },
+          })
+
+        } else {
+          console.log("code获取失败");
+        }
+      },
     })
   },
 
@@ -82,6 +107,7 @@ App({
           console.log("成功重新登录，已获取Token:", res.data.data);
           wx.setStorageSync('userToken', res.data.data);
           wx.setStorageSync('isLogin', true);
+          this.loadUserData();
         } else {
           console.error("获取Token失败:", res.data.message);
         }
@@ -120,6 +146,7 @@ App({
   handleTokenSuccess(){
     console.log("用户成功登录！")
     wx.setStorageSync('isLogin', true);
+    this.loadUserData();
 
   },
 
@@ -151,6 +178,7 @@ App({
                 console.log("成功重新登录，已获取Token:", res.data.data);
                 wx.setStorageSync('userToken', res.data.data);
                 wx.setStorageSync('isLogin', true);
+                this.loadUserData();
               } else {
                 console.error("获取Token失败:", res.data.message);
               }
@@ -169,4 +197,26 @@ App({
     });
   },
 
+  /**
+   * 加载用户数据
+   */
+  loadUserData(){
+    console.log("正在加载用户数据...");
+    const token = wx.getStorageSync('userToken');
+    if (token){
+      wx.request({
+        url: 'http://127.0.0.1:8080/user/getUser',
+        method: 'POST',
+        data: {
+          token: token
+        },
+        success: (res) => {
+          console.log("已经获取到用户数据: ");
+          console.log(res.data);
+          wx.setStorageSync('user', res.data.data);
+        }
+      })
+    }
+    
+  }
 });

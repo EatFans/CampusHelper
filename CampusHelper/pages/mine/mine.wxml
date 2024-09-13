@@ -16,7 +16,7 @@
       <view class="user-info-text-box">
         <!--第一行-->
         <view class="user-info-text-box-row">
-          <text class="user-info-username">{{user.name}}</text>
+          <text class="user-info-username">{{user.nickname}}</text>
           <view wx:if="{{userInfo.hasRealNameAuthentication}}" class="real-name-authentication-label">
             <text>已实名认证</text>
           </view>
@@ -27,14 +27,15 @@
         </view>
         <!--第二行-->
         <view class="user-info-text-box-row">
-          <text class="user-info-university">{{user.university}}</text>
+          <text wx:if="{{user.unicersity != null}}" class="user-info-university">{{user.university}}</text>
+          <text wx:if="{{user.unicersity == null}}" class="user-info-university">未选择学校</text>
         </view>
       </view>
     </view>
   </view>
 
   <view class="mine-page-body">
-    <text bind:tap="test">点击我</text>
+    <!-- <text bind:tap="test">点击我</text> -->
     <!-- 用户数据信息容器 -->
     <view class="user-data-info-container">
       <view class="user-data-info">
