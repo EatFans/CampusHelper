@@ -1,16 +1,19 @@
 <!--pages/home/home.wxml  主页界面-->
 <scroll-view class="scrollarea" scroll-y type="list">
-<!--学校定位信息-->
-<picker mode="selector" range="{{universityList}}" bindchange="onUniversityChange">
-  <view class="university-info-box">
-    <view class="university-info-icon">
-      <image src="../../images/homeImages/location.png" mode="aspectFill"/>
-    </view>
+<view class="home-page-nav-bar">
+  <picker mode="selector" range="{{universityList}}" bindchange="onUniversityChange">
+    <view class="university-info-box">
+      <view class="university-info-icon">
+        <image src="../../images/homeImages/location.png" mode="aspectFill"/>
+      </view>
   
-    <text>{{selectedUniversity}}</text>
-    <image src="../../images/homeImages/unfold.png" mode="aspectFill"/>
-  </view>
-</picker>
+      <text>{{selectedUniversity}}</text>
+      <image src="../../images/homeImages/unfold.png" mode="aspectFill"/>
+    </view>
+  </picker>
+</view>
+<!--学校定位信息-->
+
 
 
 <!--顶部区域部分-->

@@ -16,7 +16,7 @@
       <view class="user-info-text-box">
         <!--第一行-->
         <view class="user-info-text-box-row">
-          <text class="user-info-username">{{user.nickname}}</text>
+          <text bind:tap="goToProfileEdit" class="user-info-username">{{user.nickname}}</text>
           <view wx:if="{{user.hasRealNameAuthentication}}" class="real-name-authentication-label">
             <text>已实名认证</text>
           </view>

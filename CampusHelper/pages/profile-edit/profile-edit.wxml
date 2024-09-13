@@ -1,0 +1,4 @@
+<!--资料编辑页面-->
+<scroll-view>
+<nav-bar title="资料编辑" hasBack="{{true}}" />
+</scroll-view>

@@ -26,14 +26,17 @@
       {
         "pagePath": "pages/tasks/tasks",
         "text": "接单大厅",
-        "iconPath": "images/tabBarIcon/task.png",
-        "selectedIconPath": "images/tabBarIcon/task_selected.png"
-      },
-      {
-        "pagePath": "pages/orders/orders",
-        "text": "我的任务",
         "iconPath": "images/tabBarIcon/orders.png",
         "selectedIconPath": "images/tabBarIcon/orders_selected.png"
+        
+      },
+
+      {
+        "pagePath": "pages/orders/orders",
+        "text": "服务大厅",
+        "iconPath": "images/tabBarIcon/task.png",
+        "selectedIconPath": "images/tabBarIcon/task_selected.png"
+        
       },
       {
         "pagePath": "pages/mine/mine",
