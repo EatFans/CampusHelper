@@ -17,7 +17,7 @@ public class User {
     private String university;  // 用户大学
     private boolean isOrderTaker;  // 是不是接单员
     private boolean hasRealNameAuthentication;  // 是否已经实名认证
-    private int status;   // 用户账号的状态
+    private String status;   // 用户账号的状态
     private Date createTime;    // 用户创建时间
     private Date lastLoginTime;     // 上次登录上线的时间
 

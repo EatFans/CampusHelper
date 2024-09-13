@@ -2,37 +2,91 @@
 
 App({
   onLaunch() {
-    this.checkToken();
+    this.userLogin();
+  },
+
+  userLogin(){
+    wx.login({
+      success: (res) => {
+        // 先获取code，检查code是否正确获取
+        if (res.code){
+          console.log("成功获取code:"+res.code);
+          const token = wx.getStorageSync('userToken');
+          // 本地检查是否存在token
+          if (token){
+            console.log("Token存在");
+            // 如果token存在，说明用户已经用过小程序了，接下来要验证token有效性，再进一步做判断
+            this.verifyToken(token);
+          } else {
+            console.log("Token不存在");
+            // 如果token不存在，可能说明用户并没有用过小程序，也可能有用过只是清理了缓存，接下来要检查用户是否存在，然后再进行token登录
+            this.checkUserOrCreateUser(res.code);
+          }
+
+        } else {
+          console.log("获取code失败！");
+        }
+      },
+    });
+  },
+
+  checkUserOrCreateUser(code){
+    wx.request({
+      url: 'http://127.0.0.1:8080/user/checkUser',
+      method: 'POST',
+      data: {
+        code: code
+      },
+      success: (res) => {
+        console.log("服务器返回用户信息");
+        console.log(res.data);
+        // 检查res.data中status状态，
+        if (res.data.status == 'success'){
+          // 如果检查用户存在，就直接进行登录并保存token
+          this.loginAndSaveToken(code);
+
+        } else {
+          // 如果检查用户不存在，先创建用户到数据库后，再进行登录
+          wx.request({
+            url: 'http://127.0.0.1:8080/user/createaUser',
+            method: 'POST',
+            data: {
+              code: code
+            },
+            success: (res) => {
+              // TODO:  检查是否创建成功
+            }
+          });
+
+        }
+      },
+      fail: (err) => {
+        console.log("检查用户或创建用户失败");
+      }
+    })
   },
 
   /**
-   * 检查本地Token
+   * 登录并保存token
+   * @param {code码} code 
    */
-  checkToken() {
-    const token = wx.getStorageSync('userToken');
-
-    if (token) {
-      // 如果Token存在
-      console.log("Token存在，开始验证...");
-      this.verifyToken(token);
-    } else {
-      // 如果Token不存在, 发送请求检查用户是否存在于数据库中，如果不存在就创建一个新用户，
-      // 并开始登录，获取Token保存到本地
-      console.log("用户没有登录，开始登录流程...");
-      wx.login({
-        success: (res) => {
-          if (res.code){
-            // TODO:
-            // 将code请求发送到服务端，服务端来获取openid，服务端将openid与数据库进行比对，如果有就返回开始登录获取Token，
-            // 如果数据库中没有，就创建新用户信息，并返回创建信息，创建完毕进行登录获取Token
-
-          } else {
-            console.log("获取code失败！");
-          }
-        },
-      })
-      this.loginAndGetToken();
-    }
+  loginAndSaveToken(code){
+    wx.request({
+      url: 'http://127.0.0.1:8080/auth/getToken',
+      method: 'POST',
+      data: {
+        code: code
+      },
+      success: (res) => {
+        if (res.data.data) {
+          console.log("成功重新登录，已获取Token:", res.data.data);
+          wx.setStorageSync('userToken', res.data.data);
+          wx.setStorageSync('isLogin', true);
+        } else {
+          console.error("获取Token失败:", res.data.message);
+        }
+      },
+    })
   },
 
 /**
@@ -64,6 +118,7 @@ App({
    * 监听Token验证成功
    */
   handleTokenSuccess(){
+    console.log("用户成功登录！")
     wx.setStorageSync('isLogin', true);
 
   },
@@ -95,6 +150,7 @@ App({
               if (res.data.data) {
                 console.log("成功重新登录，已获取Token:", res.data.data);
                 wx.setStorageSync('userToken', res.data.data);
+                wx.setStorageSync('isLogin', true);
               } else {
                 console.error("获取Token失败:", res.data.message);
               }
@@ -113,7 +169,4 @@ App({
     });
   },
 
-  globalData: {
-    userInfo: null
-  }
 });

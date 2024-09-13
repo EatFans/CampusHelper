@@ -1,7 +1,12 @@
 package cn.fan.campushelperserver.controller;
 
+import cn.fan.campushelperserver.constant.consist.ResponseStatus;
+import cn.fan.campushelperserver.model.dao.ApiResponse;
+import cn.fan.campushelperserver.model.dao.CheckUserRequest;
 import cn.fan.campushelperserver.model.dao.GetTokenRequest;
+import cn.fan.campushelperserver.model.entity.User;
 import cn.fan.campushelperserver.service.intf.UserService;
+import com.google.protobuf.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,4 +25,13 @@ public class UserController {
     }
 
 
+    @PostMapping("/checkUser")
+    public ResponseEntity<?> checkUser(@RequestBody CheckUserRequest checkUserRequest){
+        User user = userService.checkUser(checkUserRequest);
+        if (user != null){
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS,"用户验证成功！",user));
+        } else {
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.ERROR,"用户验证失败！"));
+        }
+    }
 }
