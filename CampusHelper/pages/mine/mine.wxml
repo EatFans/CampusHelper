@@ -10,7 +10,7 @@
     </view>
     <!--登录的情况-->
     <view wx:if="{{isLogin}}" class="header-user-info-box">
-      <view class="user-info-avatar-wrapper">
+      <view class="user-info-avatar-wrapper" bind:tap="goToProfileEdit">
         <image src="{{user.avatarUrl}}" mode="aspectFill"></image>
       </view>
       <view class="user-info-text-box">
