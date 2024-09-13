@@ -100,4 +100,18 @@ public class UserServiceImpl implements UserService {
 
         return user;
     }
+
+    @Override
+    public boolean updateUserUniversity(String token, String university){
+        if (!redisService.exists(token)){
+            return false;
+        }
+        String userAuthInfo = (String) redisService.get(token);
+        String[] strings = userAuthInfo.split("\\|");
+        String openId = strings[0];
+
+        return userMapper.updateUniversity(openId,university);
+    }
+
+
 }

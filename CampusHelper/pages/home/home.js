@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    newsText: "欢迎同学使用校园助手小程序平台。",
+    newsText: "欢迎同学使用校园助手小程序平台。本平台严格保证用户信息安全，请同学放心使用，若有问题请及时联系客服！",
     universityList: [], // 学校列表
     selectedUniversity: '请选择' // 默认选择的学校
   },
@@ -17,15 +17,14 @@ Page({
   onLoad(options) {
     this.loadSupportedUniversitiesData();
     // 获取用户的大学信息
-    const userUniversity = wx.getStorageSync('user').university;
+    const user = wx.getStorageSync('user');
     // 检查用户大学是不是为null
-    if (userUniversity){
+    if (user){
       // 如果不是为null，将selectedUniversity设置为用户的大学
-      this.setData({selectedUniversity:userUniversity})
+      this.setData({selectedUniversity: user.university})
     }
   },
-  
-  
+
 
   /**
    * 加载用户的大学数据信息
@@ -117,5 +116,31 @@ Page({
       selectedUniversity: this.data.universityList[index]
     });
     console.log("选择的学校是: ", this.data.selectedUniversity);
+    // 发送请求修改用户的学校
+    wx.request({
+      url: 'http://127.0.0.1:8080/user/updateUserUniversity',
+      method: 'POST',
+      data: {
+        token: wx.getStorageSync('userToken'),
+        university: this.data.universityList[index]
+      },
+      success: (res) => {
+        console.log("正在请求修改用户学校");
+        console.log(res.data);
+        if (res.data.status == 'success'){
+          console.log("修改校区成功！");
+          // 这里修改校区成功后，将存在本地缓存中的user对象中的university值也改变成this.data.universityList[index]
+          // 更新本地缓存的用户信息中的school字段
+          let userInfo = wx.getStorageSync('user'); // 假设user是用户信息
+          if (userInfo) {
+            userInfo.university = this.data.selectedUniversity;
+            wx.setStorageSync('user', userInfo); // 更新本地缓存
+            console.log("本地user缓存数据已经更新");
+          }
+        } else {
+          console.log("修改失败！服务器返回："+res.data);
+        }
+      }
+    })
   }
 })

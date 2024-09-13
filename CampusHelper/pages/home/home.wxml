@@ -24,7 +24,9 @@
     <view class="news-text-box-icon">
       <image src="../../images/homeImages/sound.png" mode="aspectFill"></image>
     </view>
-    <text>{{newsText}}</text>
+    <view class="scroll-container">
+      <text class="scrolling-text">{{newsText}}</text>
+    </view>
   </view>
   <!--功能菜单栏-->
   <view class="header-menu">

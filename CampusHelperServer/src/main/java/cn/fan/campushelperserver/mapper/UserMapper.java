@@ -13,4 +13,6 @@ public interface UserMapper {
     int getUserCount();
 
     boolean checkNameExists(String name);
+
+    boolean updateUniversity(String openId, String university);
 }

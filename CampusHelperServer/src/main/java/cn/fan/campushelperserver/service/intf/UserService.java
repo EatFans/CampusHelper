@@ -14,4 +14,6 @@ public interface UserService {
     User createUser(String code);
 
     User getUser(String token);
+
+    boolean updateUserUniversity(String token, String university);
 }

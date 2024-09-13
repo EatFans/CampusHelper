@@ -52,4 +52,12 @@ public class UserController {
             return ResponseEntity.ok(new ApiResponse(ResponseStatus.ERROR,"获取用户失败，可能Token令牌已经失效！"));
         }
     }
+
+    @PostMapping("/updateUserUniversity")
+    public ResponseEntity<?> updateUserUniversity(@RequestBody UpdateUserUniversityRequest updateUserUniversityRequest){
+        if (userService.updateUserUniversity(updateUserUniversityRequest.getToken(), updateUserUniversityRequest.getUniversity()))
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS,"更新用户大学信息成功！"));
+        else
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.ERROR,"更新用户大学信息失败！"));
+    }
 }

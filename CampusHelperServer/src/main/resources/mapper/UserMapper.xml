@@ -24,4 +24,8 @@
     <select id="checkNameExists" parameterType="String" resultType="boolean">
         SELECT COUNT(*) > 0 FROM user WHERE nickname = #{name}
     </select>
+
+    <update id="updateUniversity" parameterType="String">
+        UPDATE user SET university = #{university} WHERE openId = #{openId}
+    </update>
 </mapper>
