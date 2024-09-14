@@ -1,7 +1,6 @@
 package cn.fan.campushelperserver.service.impl;
 
 import cn.fan.campushelperserver.mapper.UserMapper;
-import cn.fan.campushelperserver.model.dao.CheckUserRequest;
 import cn.fan.campushelperserver.model.dao.WeChatSessionResponse;
 import cn.fan.campushelperserver.model.entity.User;
 import cn.fan.campushelperserver.service.intf.RedisService;
@@ -77,6 +76,12 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
+    private String getOpenIdByToken(String token){
+        String userAuthInfo = (String) redisService.get(token);
+        String[] strings = userAuthInfo.split("\\|");
+        return strings[0];
+    }
+
     /**
      * 获取User
      * @param token 登录状态令牌
@@ -89,9 +94,7 @@ public class UserServiceImpl implements UserService {
         if (!redisService.exists(token)){
             return null;
         }
-        String userAuthInfo = (String) redisService.get(token);
-        String[] strings = userAuthInfo.split("\\|");
-        String openId = strings[0];
+        String openId = getOpenIdByToken(token);
 
         User user = userMapper.findUserByOpenId(openId);
         if (user == null){
@@ -103,15 +106,38 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean updateUserUniversity(String token, String university){
-        if (!redisService.exists(token)){
+        if (!redisService.exists(token))
             return false;
-        }
-        String userAuthInfo = (String) redisService.get(token);
-        String[] strings = userAuthInfo.split("\\|");
-        String openId = strings[0];
+        String openId = getOpenIdByToken(token);
 
         return userMapper.updateUniversity(openId,university);
     }
 
+    @Override
+    public boolean updateUserNickname(String token, String nickname){
+        if (!redisService.exists(token))
+            return false;
+        String openId = getOpenIdByToken(token);
+        // 检查是否重名
+        return userMapper.updateNickname(openId,nickname);
+    }
 
+    @Override
+    public boolean updateUserAvatarUrl(String token, String avatarUrl){
+        if (!redisService.exists(token))
+            return false;
+        String openId = getOpenIdByToken(token);
+
+
+        return userMapper.updateAvatarUrl(openId,avatarUrl);
+    }
+
+    @Override
+    public String getUserUniversity(String token) {
+        if (!redisService.exists(token))
+            return null;
+        String openId = getOpenIdByToken(token);
+
+        return userMapper.getUniversity(openId);
+    }
 }

@@ -16,7 +16,6 @@ Page({
    */
   onLoad(options) {
     this.loadSupportedUniversitiesData();
-    // 获取用户的大学信息
     const user = wx.getStorageSync('user');
     // 检查用户大学是不是为null
     if (user){
@@ -38,7 +37,9 @@ Page({
       },
       success: (res) => {
         console.log("已经获取用户保存的校园信息");
-
+        this.setData({
+          selectedUniversity: res.data.data
+        })
       }
     })
   },
@@ -67,10 +68,14 @@ Page({
     
   },
 
+
+
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    // 获取用户的大学信息
+    
 
   },
 

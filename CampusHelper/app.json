@@ -6,7 +6,7 @@
     "pages/mine/mine",
     "pages/search/taskSearch/taskSearch",
     "pages/orders/orders",
-    "pages/profile-edit/profile-edit"
+    "pages/profileEdit/profileEdit"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -28,15 +28,12 @@
         "text": "接单大厅",
         "iconPath": "images/tabBarIcon/orders.png",
         "selectedIconPath": "images/tabBarIcon/orders_selected.png"
-        
       },
-
       {
         "pagePath": "pages/orders/orders",
         "text": "服务大厅",
         "iconPath": "images/tabBarIcon/task.png",
         "selectedIconPath": "images/tabBarIcon/task_selected.png"
-        
       },
       {
         "pagePath": "pages/mine/mine",

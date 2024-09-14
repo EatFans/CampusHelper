@@ -95,24 +95,29 @@ App({
    * 登录并保存token
    * @param {code码} code 
    */
-  loginAndSaveToken(code){
-    wx.request({
-      url: 'http://127.0.0.1:8080/auth/getToken',
-      method: 'POST',
-      data: {
-        code: code
-      },
+  loginAndSaveToken(){
+    wx.login({
       success: (res) => {
-        if (res.data.data) {
-          console.log("成功重新登录，已获取Token:", res.data.data);
-          wx.setStorageSync('userToken', res.data.data);
-          wx.setStorageSync('isLogin', true);
-          this.loadUserData();
-        } else {
-          console.error("获取Token失败:", res.data.message);
-        }
+        wx.request({
+          url: 'http://127.0.0.1:8080/auth/getToken',
+          method: 'POST',
+          data: {
+            code: res.code
+          },
+          success: (res) => {
+            if (res.data.data) {
+              console.log("成功重新登录，已获取Token:", res.data.data);
+              wx.setStorageSync('userToken', res.data.data);
+              wx.setStorageSync('isLogin', true);
+              this.loadUserData();
+            } else {
+              console.error("获取Token失败:", res.data.message);
+            }
+          },
+        })
       },
     })
+    
   },
 
 /**
@@ -215,8 +220,21 @@ App({
           console.log(res.data);
           wx.setStorageSync('user', res.data.data);
         }
-      })
+      });
     }
     
+  },
+
+  updateUserLoginTime(){
+    wx.request({
+      url: 'url',
+      method: 'POST',
+      data: {
+        
+      },
+      success: (res) => {
+
+      }
+    })
   }
 });

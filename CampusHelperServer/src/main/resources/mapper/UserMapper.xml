@@ -28,4 +28,16 @@
     <update id="updateUniversity" parameterType="String">
         UPDATE user SET university = #{university} WHERE openId = #{openId}
     </update>
+
+    <update id="updateNickname" parameterType="String">
+        UPDATE user SET nickname = #{nickname} WHERE openId = #{openId}
+    </update>
+
+    <update id="updateAvatarUrl" parameterType="String">
+        UPDATE user SET avatarUrl = #{avatarUrl} WHERE openId = #{openId}
+    </update>
+
+    <select id="getUniversity" parameterType="String" resultType="String">
+        SELECT university FROM user WHERE openId = #{openId}
+    </select>
 </mapper>

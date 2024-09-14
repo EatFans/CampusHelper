@@ -25,19 +25,19 @@ page {
   height: 20px;
 }
 
-.university-info-icon image {
+.university-info-icon-image {
   width: 100%;
   height: 100%;
 }
 
-.university-info-box text {
+.university-info-box-text {
   margin-top: 16%;
   margin-left: 5px;
   font-weight: 600;
 } 
 
-.university-info-box image {
-  margin-top: 16%;
+.university-info-box-image {
+  margin-top: 16.5%;
   width: 20px;
   height: 20px;
 }
@@ -46,7 +46,7 @@ page {
   height: auto;
   /* border: red solid 1px; */
   background: white;
-  margin-top: 15px;
+  margin-top: 1px;
   border-bottom-left-radius: 8%;
   border-bottom-right-radius: 8%;
 }

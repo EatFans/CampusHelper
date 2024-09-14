@@ -1,7 +1,7 @@
 package cn.fan.campushelperserver.service.impl;
 
-import cn.fan.campushelperserver.model.dao.CheckTokenRequest;
-import cn.fan.campushelperserver.model.dao.GetTokenRequest;
+import cn.fan.campushelperserver.model.dao.request.CheckTokenRequest;
+import cn.fan.campushelperserver.model.dao.request.GetTokenRequest;
 import cn.fan.campushelperserver.model.dao.WeChatSessionResponse;
 import cn.fan.campushelperserver.service.intf.AuthService;
 import cn.fan.campushelperserver.service.intf.RedisService;

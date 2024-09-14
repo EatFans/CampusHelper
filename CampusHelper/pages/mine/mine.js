@@ -4,13 +4,15 @@ Page({
   data: {
     user: {},
     isLogin: false,
+    hasUniversity: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    
+    this.setData({
+    })
     
   },
 
@@ -20,6 +22,11 @@ Page({
       isLogin: wx.getStorageSync('isLogin'),
       user: user
     })
+    if (this.data.user.university){
+      this.setData({
+        hasUniversity: true
+      })
+    }
   },
 
   
@@ -41,7 +48,7 @@ Page({
    */
   goToProfileEdit() {
     wx.navigateTo({
-      url: '/pages/profile-edit/profile-edit', // 跳转到 profile-edit 页面
+      url: '/pages/profileEdit/profileEdit', // 跳转到 profile-edit 页面
       success: function(res) {
         // 跳转成功回调
         console.log('成功跳转到用户资料编辑页面');

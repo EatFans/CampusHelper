@@ -1,8 +1,5 @@
 package cn.fan.campushelperserver.service.intf;
 
-import cn.fan.campushelperserver.model.dao.CheckUserRequest;
-import cn.fan.campushelperserver.model.dao.CreateUserRequest;
-import cn.fan.campushelperserver.model.dao.GetTokenRequest;
 import cn.fan.campushelperserver.model.entity.User;
 
 /**
@@ -16,4 +13,10 @@ public interface UserService {
     User getUser(String token);
 
     boolean updateUserUniversity(String token, String university);
+
+    boolean updateUserNickname(String token, String nickname);
+
+    boolean updateUserAvatarUrl(String token, String avatarUrl);
+
+    String getUserUniversity(String token);
 }

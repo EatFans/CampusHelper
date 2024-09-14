@@ -15,4 +15,11 @@ public interface UserMapper {
     boolean checkNameExists(String name);
 
     boolean updateUniversity(String openId, String university);
+
+    boolean updateNickname(String openId, String nickname);
+
+    boolean updateAvatarUrl(String openId, String avatarUrl);
+
+    String getUniversity(String openId);
+
 }

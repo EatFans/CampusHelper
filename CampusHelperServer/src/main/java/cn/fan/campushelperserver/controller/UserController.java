@@ -2,9 +2,9 @@ package cn.fan.campushelperserver.controller;
 
 import cn.fan.campushelperserver.constant.consist.ResponseStatus;
 import cn.fan.campushelperserver.model.dao.*;
+import cn.fan.campushelperserver.model.dao.request.*;
 import cn.fan.campushelperserver.model.entity.User;
 import cn.fan.campushelperserver.service.intf.UserService;
-import com.google.protobuf.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -59,5 +59,30 @@ public class UserController {
             return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS,"更新用户大学信息成功！"));
         else
             return ResponseEntity.ok(new ApiResponse(ResponseStatus.ERROR,"更新用户大学信息失败！"));
+    }
+
+    @PostMapping("/updateUserNickname")
+    public ResponseEntity<?> updateUserNickname(@RequestBody UpdateUserNicknameRequest updateUserNicknameRequest){
+        if (userService.updateUserNickname(updateUserNicknameRequest.getToken(), updateUserNicknameRequest.getNickname()))
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS,"更新用户昵称成功！"));
+        else
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.ERROR,"更新用户昵称失败！"));
+    }
+
+    @PostMapping("/updateUserAvatarUrl")
+    public ResponseEntity<?> updateUserAvatarUrl(@RequestBody UpdateUserAvatarUrlRequest updateUserAvatarUrlRequest){
+        if (userService.updateUserAvatarUrl(updateUserAvatarUrlRequest.getToken(), updateUserAvatarUrlRequest.getAvatarUrl()))
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS,"更新用户头像成功！"));
+        else
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.ERROR,"更新用户头像失败！"));
+    }
+
+    @PostMapping("/getUserUniversity")
+    public ResponseEntity<?> getUserUniversity(@RequestBody GetUserUniversityRequest getUserUniversityRequest){
+        String userUniversity = userService.getUserUniversity(getUserUniversityRequest.getToken());
+        if (userUniversity != null)
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS,"成功获取用户大学的信息",userUniversity));
+        else
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.ERROR,"获取用户大学失败"));
     }
 }

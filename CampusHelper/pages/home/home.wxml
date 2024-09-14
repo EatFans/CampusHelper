@@ -4,11 +4,11 @@
   <picker mode="selector" range="{{universityList}}" bindchange="onUniversityChange">
     <view class="university-info-box">
       <view class="university-info-icon">
-        <image src="../../images/homeImages/location.png" mode="aspectFill"/>
+        <image class="university-info-icon-image" src="../../images/homeImages/location.png" mode="aspectFill"/>
       </view>
-  
-      <text>{{selectedUniversity}}</text>
-      <image src="../../images/homeImages/unfold.png" mode="aspectFill"/>
+      <text wx:if="{{selectedUniversity != null}}" class="university-info-box-text">{{selectedUniversity}}</text>
+      <text wx:if="{{selectedUniversity == null}}" class="university-info-box-text">请选择</text>
+      <image class="university-info-box-image" src="../../images/homeImages/unfold.png" mode="aspectFill"/>
     </view>
   </picker>
 </view>

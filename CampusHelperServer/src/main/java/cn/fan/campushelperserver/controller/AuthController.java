@@ -2,12 +2,9 @@ package cn.fan.campushelperserver.controller;
 
 import cn.fan.campushelperserver.constant.consist.ResponseStatus;
 import cn.fan.campushelperserver.model.dao.ApiResponse;
-import cn.fan.campushelperserver.model.dao.CheckTokenRequest;
-import cn.fan.campushelperserver.model.dao.CheckTokenResponse;
-import cn.fan.campushelperserver.model.dao.GetTokenRequest;
+import cn.fan.campushelperserver.model.dao.request.CheckTokenRequest;
+import cn.fan.campushelperserver.model.dao.request.GetTokenRequest;
 import cn.fan.campushelperserver.service.intf.AuthService;
-import cn.fan.campushelperserver.service.intf.RedisService;
-import com.google.protobuf.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

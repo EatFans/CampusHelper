@@ -27,8 +27,8 @@
         </view>
         <!--第二行-->
         <view class="user-info-text-box-row">
-          <text wx:if="{{user.unicersity != ''}}" class="user-info-university">{{user.university}}</text>
-          <text wx:if="{{user.unicersity == ''}}" class="user-info-university">未选择学校</text>
+          <text wx:if="{{hasUniversity}}" class="user-info-university">{{user.university}}</text>
+          <text wx:else="{{hasUniversity}}" class="user-info-university">未选择学校</text>
         </view>
       </view>
     </view>
