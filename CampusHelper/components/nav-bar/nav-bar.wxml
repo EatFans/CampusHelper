@@ -1,0 +1,14 @@
+<!--顶部导航栏-->
+<view class="nav-bar-container"> 
+  <view class="nav-bar-content">
+    <view wx:if="{{hasBack}}" bind:tap="goBack" class="nav-bar-back-button">
+      <view class="nav-bar-back-button-icon">
+        <image class="nav-bar-back-button-icon-image" src="../../images/icon/back.png" mode="aspectFill"/>
+      </view>
+    </view>
+
+    <view class="nav-bar-title">
+      <text>{{title}}</text>
+    </view>
+  </view>
+</view>

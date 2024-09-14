@@ -1,0 +1,87 @@
+/* pages/profileEdit/profileEdit.wxss */
+page {
+  box-sizing: border-box;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 96rpx);
+  background: #EDECF3FF;
+}
+
+.profile-edit-page-container {
+  width: 100%;
+  height: auto;
+  /* border: black solid 1px; */
+}
+
+.user-profile-info-box {
+  width: 100%;
+  height: 100px;
+  margin-top: 10px;
+  /* background: white; */
+}
+
+.user-profile-info-row {
+  width: 100%;
+  height: 50px;
+  background: white;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 1px;
+}
+
+.user-profile-info-text {
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 350;
+}
+
+.user-profile-info-button:not([size='mini']) {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  /* border: black solid 1px; */
+  margin-left: 75%;
+}
+
+
+.user-profile-info-input {
+  width: auto;
+  /* border: black solid 1px; */
+  text-align: right;
+  margin-left: 46%;
+  color: rgb(122, 112, 112);
+}
+
+.user-profile-info-avatar-image {
+  width: 100%;
+  height: 100%;
+}
+
+.user-profile-info-update-button-box {
+  width: 100%;
+  height: 50px;
+  /* border: black solid 1px; */
+  margin-top: 20px;
+}
+
+.user-profile-info-update-button {
+  width: 70%;
+  height: 100%;
+  background: rgb(31, 116, 212);
+  margin: 0 auto;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-profile-info-update-button-text {
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+}
