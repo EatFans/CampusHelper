@@ -1,0 +1,5 @@
+<!--pages/settings/settings.wxml-->
+<view>
+<nav-bar title="设置" hasBack="{{true}}" />
+
+</view>
