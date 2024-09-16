@@ -6,7 +6,9 @@
     "pages/mine/mine",
     "pages/search/taskSearch/taskSearch",
     "pages/orders/orders",
-    "pages/profileEdit/profileEdit"
+    "pages/profileEdit/profileEdit",
+    "pages/settings/settings",
+    "pages/customerServices/customerServices"
   ],
   "window": {
     "navigationBarTextStyle": "black",

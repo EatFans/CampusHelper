@@ -4,14 +4,14 @@
     <!--没有登录的情况-->
     <view wx:if="{{!isLogin}}" class="header-user-info-box">
       <view class="user-info-avatar-wrapper">
-        <image src="https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0" mode="aspectFill"></image>
+        <image class="user-info-avatar-wrapper-image" src="{{defaultAvatarUrl}}" mode="aspectFill"></image>
       </view>
       <text class="not-login-text" bind:tap="onLoginTap">点击登录</text>
     </view>
     <!--登录的情况-->
     <view wx:if="{{isLogin}}" class="header-user-info-box">
       <view class="user-info-avatar-wrapper" bind:tap="goToProfileEdit">
-        <image src="{{user.avatarUrl}}" mode="aspectFill"></image>
+        <image class="user-info-avatar-wrapper-image" src="{{user.avatarUrl}}" mode="aspectFill"></image>
       </view>
       <view class="user-info-text-box">
         <!--第一行-->
@@ -88,6 +88,7 @@
         <view class="my-services-title">
           <text>我的服务</text>
         </view>
+        <!--第一行-->
         <view class="my-services-row">
           <view class="my-services-item">
             <view class="my-services-item-icon">
@@ -110,15 +111,46 @@
             <text>待定</text>
           </view>
 
+          <view class="my-services-item" bind:tap="goToCustomerServices">
+            <view class="my-services-item-icon">
+              <image src="../../images/mienImages/customer.png" mode="aspectFill"></image>
+            </view>
+            <text>联系客服</text>
+          </view>
+
+        </view>
+
+        <!--第二行-->
+        <view class="my-services-row">
           <view class="my-services-item">
             <view class="my-services-item-icon">
               <image src="../../images/homeMenuIcon/recommend.png" mode="aspectFill"></image>
             </view>
             <text>待定</text>
           </view>
+          <view class="my-services-item">
+            <view class="my-services-item-icon">
+              <image src="../../images/homeMenuIcon/recommend.png" mode="aspectFill"></image>
+            </view>
+            <text>待定</text>
+          </view>
+          <view class="my-services-item">
+            <view class="my-services-item-icon">
+              <image src="../../images/homeMenuIcon/recommend.png" mode="aspectFill"></image>
+            </view>
+            <text>待定</text>
+          </view>
+          <view class="my-services-item" bind:tap="goToSettings">
+            <view class="my-services-item-icon">
+              <image src="../../images/mienImages/settings.png" mode="aspectFill"></image>
+            </view>
+            <text>设置管理</text>
+          </view>
 
         </view>
+
       </view>
     </view>
   </view>
+
 </scroll-view>

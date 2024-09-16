@@ -85,4 +85,13 @@ public class UserController {
         else
             return ResponseEntity.ok(new ApiResponse(ResponseStatus.ERROR,"获取用户大学失败"));
     }
+
+    @PostMapping("/getUserAvatarUrl")
+    public ResponseEntity<?> getUserAvatarUrl(@RequestBody GetUserRequest getUserRequest){
+        String userAvatarUrl = userService.getUserAvatarUrl(getUserRequest.getToken());
+        if (userAvatarUrl != null)
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS, "成功获取用户头像url",userAvatarUrl));
+        else
+            return ResponseEntity.ok(new ApiResponse(ResponseStatus.ERROR,"获取用户头像url失败"));
+    }
 }

@@ -40,4 +40,8 @@
     <select id="getUniversity" parameterType="String" resultType="String">
         SELECT university FROM user WHERE openId = #{openId}
     </select>
+
+    <select id="getAvatarUrl" parameterType="String" resultType="String">
+        SELECT avatarUrl FROM user WHERE openId = #{openId}
+    </select>
 </mapper>

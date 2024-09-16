@@ -140,4 +140,12 @@ public class UserServiceImpl implements UserService {
 
         return userMapper.getUniversity(openId);
     }
+
+    @Override
+    public String getUserAvatarUrl(String token){
+        if (!redisService.exists(token))
+            return null;
+        String openId = getOpenIdByToken(token);
+        return userMapper.getAvatarUrl(openId);
+    }
 }

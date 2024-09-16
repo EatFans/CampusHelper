@@ -3,6 +3,8 @@
 Page({
   data: {
     user: {},
+    userAvatarUrl: '',
+    defaultAvatarUrl: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0',
     isLogin: false,
     hasUniversity: false,
   },
@@ -11,13 +13,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.setData({
-    })
     
   },
 
+
   onShow(){
     const user = wx.getStorageSync('user');
+    const avatarUrl = user.avatarUrl || this.data.defaultAvatarUrl; // 如果avatarUrl为空，使用默认头像
+    this.checkUserAvatarUrl(avatarUrl);
     this.setData({
       isLogin: wx.getStorageSync('isLogin'),
       user: user
@@ -27,18 +30,41 @@ Page({
         hasUniversity: true
       })
     }
+    if (this.data.user.avatarUrl){
+      this.setData({
+        userAvatarUrl: this.data.user.avatarUrl
+      })
+    }
   },
 
-  
-
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
-    // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '用于完善用户资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+  /**
+   * 检查用户头像url是否有效
+   */
+  checkUserAvatarUrl(avatarUrl){
+    wx.request({
+      url: avatarUrl,
+      method: 'GET',
       success: (res) => {
-        console.log(res.userInfo);
-
+        if (res.statusCode === 200) {
+          console.log('头像URL有效');
+          // 头像URL有效，继续使用该头像
+        } else {
+          console.log('头像URL失效');
+          // 头像URL无效，切换为默认头像
+          this.setData({
+            'user.avatarUrl': this.data.defaultAvatarUrl,
+          });
+          console.log("重置用户头像为默认头像!");
+        }
+      },
+      fail: (err) => {
+        console.error('请求失败', err);
+        // 请求失败，也认为头像无效，使用默认头像
+        console.log("用户头像url时效！");
+        this.setData({
+          'user.avatarUrl': this.data.defaultAvatarUrl,
+        });
+        console.log("重置用户头像为默认头像!");
       }
     })
   },
@@ -58,6 +84,36 @@ Page({
         console.error('跳转失败', err);
       }
     });
+  },
+
+  /**
+   * 跳转到设置页面
+   */
+  goToSettings(){
+    wx.navigateTo({
+      url: '/pages/settings/settings',
+      success: function(res) {
+        console.log("成功跳转到设置页面");
+      },
+      fail: function(err) {
+        console.error('跳转失败',err);
+      }
+    })
+  },
+
+  /**
+   * 跳转到联系客服页面
+   */
+  goToCustomerServices(){
+    wx.navigateTo({
+      url: '/pages/customerServices/customerServices',
+      success: function(res) {
+        console.log("成功跳转到联系客服页面");
+      },
+      fail: function(err) {
+        console.error('跳转失败',err);
+      }
+    })
   },
 
   

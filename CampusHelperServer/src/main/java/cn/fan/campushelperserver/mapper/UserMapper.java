@@ -22,4 +22,6 @@ public interface UserMapper {
 
     String getUniversity(String openId);
 
+    String getAvatarUrl(String openId);
+
 }

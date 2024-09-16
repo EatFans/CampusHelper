@@ -19,4 +19,6 @@ public interface UserService {
     boolean updateUserAvatarUrl(String token, String avatarUrl);
 
     String getUserUniversity(String token);
+
+    String getUserAvatarUrl(String token);
 }

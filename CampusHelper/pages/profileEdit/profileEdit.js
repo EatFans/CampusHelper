@@ -8,7 +8,8 @@ Page({
     beforeNickname: '',   // 更新前的昵称
     beforeAvatarUrl: '',  // 更新前的头像url
     updatedNickname: '',  //更新后的昵称
-    updatedAvatarUrl: ''         // 更新后的头像url
+    updatedAvatarUrl: '',         // 更新后的头像url
+    defaultAvatarUrl: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0',
   },
 
   /**
@@ -32,16 +33,51 @@ Page({
     console.log("正在从缓存中加载用户数据!");
     const user = wx.getStorageSync('user');
     if (user) {
+    
       this.setData({
         beforeNickname: user.nickname,
         beforeAvatarUrl: user.avatarUrl
-      })
+      });
+      this.checkUserAvatarUrl(user.avatarUrl);
 
       console.log("用户数据加载成功:");
 
     } else {
       console.log("数据加载失败")
     }
+  },
+
+  /**
+   * 检查用户头像url是否有效
+   * @param {用户头像url}} avatarUrl 
+   */
+  checkUserAvatarUrl(avatarUrl){
+    wx.request({
+      url: avatarUrl,
+      method: 'GET',
+      success: (res) => {
+        if (res.statusCode === 200) {
+          console.log('头像URL有效');
+          // 头像URL有效，继续使用该头像
+        } else {
+          console.log('头像URL失效');
+          // 头像URL无效，切换为默认头像
+          this.setData({
+            beforeAvatarUrl: this.data.defaultAvatarUrl,
+          });
+          console.log("重置用户头像为默认头像!");
+        }
+      },
+      fail: (err) => {
+        console.error('请求失败', err);
+        // 请求失败，也认为头像无效，使用默认头像
+        console.log("用户头像url时效！");
+        this.setData({
+          beforeAvatarUrl: this.data.defaultAvatarUrl,
+        });
+        console.log("重置用户头像为默认头像!");
+      }
+    });
   },
 
   /**
