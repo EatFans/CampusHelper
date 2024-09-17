@@ -6,6 +6,30 @@
         <h1>后台管理系统登录</h1>
       </div>
       <div class="login-box-content">
+        <!--输入账号-->
+        <div class="login-box-input-username-item">
+          <div class="login-box-input-username-title">
+            <p>账号</p>
+            <p v-if="!isUsernameTrue" class="test">账号错误</p>
+          </div>
+          <div class="login-box-input-username-input">
+
+          </div>
+        </div>
+        <!--输入密码-->
+        <div class="login-box-input-password-item">
+          <div class="login-box-input-password-title">
+            <p>密码</p>
+          </div>
+          <div class="login-box-input-password-input">
+
+          </div>
+        </div>
+
+        <!-- 登录按钮 -->
+        <div class="login-box-button-item" @click="toggleUsernameTrue">
+          <button class="login-box-button">登录</button>
+        </div>
 
       </div>
     </div>
@@ -13,10 +37,22 @@
 </template>
 
 <script setup>
+import {ref} from "vue";
+
+const isUsernameTrue = ref(true);
+
+const toggleUsernameTrue = () => {
+  isUsernameTrue.value = !isUsernameTrue.value;
+}
 
 </script>
 
 <style scoped>
+.test {
+  color: red;
+  margin-left: 5px;
+}
+
 .login-page-container {
   width: 100%;
   height: 100vh;
@@ -25,9 +61,9 @@
 }
 
 .login-box {
-  margin-top: 15vh;
-  width: 700px;
-  height: 600px;
+  margin-top: 190px;
+  width: 500px;
+  height: 350px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -49,13 +85,75 @@
 }
 
 .login-box-title h1 {
-  font-weight: 500;
-
+  font-weight: 400;
+  font-size: 1.8em;
+  margin-top: 40px;
+  color: #8a8686;
 }
 
 .login-box-content {
   width: 100%;
   height: 100%;
-  border: black solid 1px;
+  /*border: black solid 1px； */
+  display: flex;
+  flex-direction: column;
 }
+
+.login-box-input-username-item {
+  width: 80%;
+  height: auto;
+  /*border: black solid 1px;*/
+  margin: 60px auto 0;
+}
+
+.login-box-input-password-item{
+  width: 80%;
+  height: auto;
+  margin: 10px auto;
+  /*border: black solid 1px;*/
+}
+
+
+.login-box-input-username-title, .login-box-input-password-title {
+  height: 20px;
+  width: 100%;
+  /*background: red;*/
+  display: flex;
+  align-items: center;
+}
+
+.login-box-input-username-title p, .login-box-input-password-title p {
+  font-size: 14px;
+  font-weight: 300;
+  color: #ffffff;
+
+}
+
+.login-box-input-username-input, .login-box-input-password-input{
+  height: 40px;
+  width: 100%;
+  background: #fffdfd;
+  border-radius: 8px;
+}
+
+.login-box-button-item {
+  width: 80%;
+  height: 40px;
+  margin: 20px auto;
+}
+
+.login-box-button {
+  width: 100%;
+  height: 100%;
+  background: #00A2E1;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+}
+
+.login-box-button:hover {
+  background: #60bbdd;
+}
+
 </style>
