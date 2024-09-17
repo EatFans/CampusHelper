@@ -10,10 +10,12 @@
         <div class="login-box-input-username-item">
           <div class="login-box-input-username-title">
             <p>账号</p>
-            <p v-if="!isUsernameTrue" class="test">账号错误</p>
           </div>
           <div class="login-box-input-username-input">
-
+            <div class="login-box-input-username-input-icon">
+              <i class='bx bxs-user'></i>
+            </div>
+            <input type="text" id="username" value="" />
           </div>
         </div>
         <!--输入密码-->
@@ -22,7 +24,10 @@
             <p>密码</p>
           </div>
           <div class="login-box-input-password-input">
-
+            <div class="login-box-input-password-input-icon">
+              <i class='bx bxs-lock' ></i>
+            </div>
+            <input type="password" id="password" value="" />
           </div>
         </div>
 
@@ -39,7 +44,7 @@
 <script setup>
 import {ref} from "vue";
 
-const isUsernameTrue = ref(true);
+const isUsernameTrue = ref(false);
 
 const toggleUsernameTrue = () => {
   isUsernameTrue.value = !isUsernameTrue.value;
@@ -48,10 +53,6 @@ const toggleUsernameTrue = () => {
 </script>
 
 <style scoped>
-.test {
-  color: red;
-  margin-left: 5px;
-}
 
 .login-page-container {
   width: 100%;
@@ -134,6 +135,29 @@ const toggleUsernameTrue = () => {
   width: 100%;
   background: #fffdfd;
   border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+}
+
+.login-box-input-username-input-icon, .login-box-input-password-input-icon {
+  width: 30px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box-input-username-input-icon i, .login-box-input-password-input-icon i {
+  font-size: 20px;
+  color: #a5a0a0;
+}
+
+.login-box-input-username-input input, .login-box-input-password-input input{
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  outline:none;
 }
 
 .login-box-button-item {
