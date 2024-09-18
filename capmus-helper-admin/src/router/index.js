@@ -9,12 +9,19 @@ const router = createRouter({
     routes:[
         {
             path:'/',
-            name: 'HomePage',
             component: HomePage,
             meta: {
-                title: '主页'
+                title: '仪表盘'
             }
 
+        },
+        {
+            path:'/dashboard',
+            name:'HomePage',
+            component: HomePage,
+            meta: {
+                title: '仪表盘'
+            }
         },
         {
             path: '/login',

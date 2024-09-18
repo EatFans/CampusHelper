@@ -1,6 +1,6 @@
 <template>
   <div :class="['app-wrapper', sidebarClass]">
-    <SideBar :isSidebarOpen="isSidebarOpen" />
+    <SideBar :isSidebarOpen="isSidebarOpen" :showIndex="0"/>
     <div class="main-container">
       <div class="main-content">
         <button @click="toggleSidebar">点我</button>
@@ -46,7 +46,6 @@ const toggleSidebar = () => {
 .main-container {
   width: 100%;
   height: auto;
-  background: red;
   overflow-y: auto;
 }
 
@@ -57,7 +56,6 @@ const toggleSidebar = () => {
 .hiddenSidebar .main-container {
   width: 100%;
   height: 2500px;
-  background: green;
   overflow-y: auto;
 }
 
@@ -73,7 +71,6 @@ const toggleSidebar = () => {
   width: 100%;
   height: 2500px;
   margin-left: 50px;
-  background: yellow;
 }
 
 </style>
