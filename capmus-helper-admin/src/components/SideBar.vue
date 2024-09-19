@@ -38,9 +38,14 @@ const sidebarList = [
     icon: 'bx bx-tachometer'
   },
   {
-    text: '文档',
+    text: '使用文档',
     link: '/doc',
     icon: 'bx bx-file'
+  },
+  {
+    text: '用户管理',
+    link: '/user-manager',
+    icon: 'bx bx-user'
   }
 ]
 
