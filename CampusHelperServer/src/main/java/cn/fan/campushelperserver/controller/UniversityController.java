@@ -1,10 +1,12 @@
 package cn.fan.campushelperserver.controller;
 
+import cn.fan.campushelperserver.constant.consist.ResponseStatus;
+import cn.fan.campushelperserver.model.dao.response.ApiResponse;
+import cn.fan.campushelperserver.model.dao.request.AddUniversityRequest;
 import cn.fan.campushelperserver.service.intf.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +24,12 @@ public class UniversityController {
     @GetMapping("/getAllSupportedUniversities")
     public List<String> getAllSupportedUniversities(){
         return universityService.getAllSupportedUniversityNames();
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<?> addUniversity(@RequestBody AddUniversityRequest addUniversityRequest){
+        // 将请求体的数据传递给UniversityService业务类中，处理完返回是否成功执行
+
+        return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS,"测试成功！",addUniversityRequest));
     }
 }

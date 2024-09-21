@@ -22,13 +22,17 @@ import HeaderBar from "@/components/HeaderBar.vue";
 // 定义一个状态来控制侧边栏的展开与折叠
 const isSidebarOpen = ref(true);
 
-const pageIndex = ref(0);
+const pageIndex = ref(3);
 
 // 定义页面路径显示的列表
 const pagePathList = ref([
   {
     title: '主页',
     url: '/dashboard'
+  },
+  {
+    title: '订单管理',
+    url: '/task-manager'
   }
 ]);
 

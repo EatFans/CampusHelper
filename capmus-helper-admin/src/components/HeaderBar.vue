@@ -6,21 +6,22 @@
 
     <!--页面路径显示-->
     <div class="page-path-display-box">
-      <p class="page-path-display-text">{{pagePathText}}</p>
+      <p v-for="(item, index) in pagePathList " :key="index" @click="goToPage(item.url)" class="page-path-display-text">{{item.title}} /</p>
     </div>
   </div>
 </template>
 
 <script setup>
 import {defineProps, ref} from "vue";
+import router from "@/router";
 
 const isSidebarOpen = ref(true);
 
 // eslint-disable-next-line no-unused-vars
 const props = defineProps({
-  pagePathText: {
-    type: String,
-    default: ''
+  pagePathList: {
+    type: Array,
+    default: null
   }
 });
 
@@ -30,6 +31,11 @@ const emit = defineEmits(['sidebarValue']);
 const sendIsSideBarOpen = () => {
   isSidebarOpen.value = !isSidebarOpen.value;
   emit("sidebarValue", isSidebarOpen.value);
+  console.log("sidebarValue", isSidebarOpen.value);
+}
+
+const goToPage = (url) => {
+  router.push(url);
 }
 
 
@@ -72,11 +78,11 @@ const sendIsSideBarOpen = () => {
 .page-path-display-text {
   font-size: 14px;
   color: #b7bbbf;
-
+  margin-left: 5px;
 }
 
 .page-path-display-text:hover {
-  text-decoration: underline;
+  color: #4098f5;
 }
 
 

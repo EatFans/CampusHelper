@@ -9,4 +9,11 @@
         SELECT university FROM CampusHelper.universities
     </select>
 
+    <select id="checkUniversityExists" parameterType="String" resultType="boolean">
+        SELECT count(*) > 0 FROM universities WHERE university = #{university}
+    </select>
+
+    <insert id="insertUniversity" parameterType="cn.fan.campushelperserver.model.entity.University">
+        INSERT INTO universities (university,province,city,updatedByName,updatedByUuid,updatedAt) VALUES (#{university}, #{province},#{city},#{updatedByName},#{updatedByUuid},#{updatedAt})
+    </insert>
 </mapper>

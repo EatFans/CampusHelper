@@ -1,12 +1,12 @@
 <template>
   <div :class="['app-wrapper', sidebarClass]">
     <!-- 左侧侧边栏 -->
-    <SideBar :isSidebarOpen="isSidebarOpen" :showIndex="1"/>
+    <SideBar :isSidebarOpen="isSidebarOpen" :showIndex="pageIndex"/>
 
     <!--主要容器-->
     <div class="main-container">
       <div class="main-content">
-        <HeaderBar @sidebarValue="toggleSidebar" :pagePathText="pagePathText" />
+        <HeaderBar @sidebarValue="toggleSidebar" :pagePathList="pagePathList" />
 
       </div>
     </div>
@@ -21,7 +21,20 @@ import HeaderBar from "@/components/HeaderBar.vue";
 
 // 定义一个状态来控制侧边栏的展开与折叠
 const isSidebarOpen = ref(true);
-const pagePathText = ref("首页/使用文档");
+
+const pageIndex = ref(1);
+
+// 定义一个页面显示路径的数据列表
+const pagePathList = ref([
+  {
+    title: '主页',
+    url: '/dashboard'
+  },
+  {
+    title: '使用文档',
+    url: '/doc'
+  }
+]);
 
 // 根据侧边栏的状态来动态生成 class
 const sidebarClass = computed(() => {

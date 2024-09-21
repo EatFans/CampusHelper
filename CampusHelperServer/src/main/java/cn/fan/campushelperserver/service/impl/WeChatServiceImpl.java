@@ -1,6 +1,6 @@
 package cn.fan.campushelperserver.service.impl;
 
-import cn.fan.campushelperserver.model.dao.WeChatSessionResponse;
+import cn.fan.campushelperserver.model.dao.response.WeChatSessionResponse;
 import cn.fan.campushelperserver.service.intf.WeChatService;
 import cn.fan.campushelperserver.util.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;

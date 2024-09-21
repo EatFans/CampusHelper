@@ -45,7 +45,27 @@ const sidebarList = [
   {
     text: '用户管理',
     link: '/user-manager',
-    icon: 'bx bx-user'
+    icon: 'bx bx-group'
+  },
+  {
+    text: '订单管理',
+    link: '/task-manager',
+    icon: 'bx bx-task'
+  },
+  {
+    text: '学校管理',
+    link: '/university-manager',
+    icon: 'bx bx-buildings'
+  },
+  {
+    text: '成员管理',
+    link: '/member-manager',
+    icon: 'bx bx-book-reader'
+  },
+  {
+    text: '个人中心',
+    link: '/person',
+    icon: 'bx bxs-user-rectangle'
   }
 ]
 

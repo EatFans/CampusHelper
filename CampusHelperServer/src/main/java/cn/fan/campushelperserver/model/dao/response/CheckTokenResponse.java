@@ -1,4 +1,4 @@
-package cn.fan.campushelperserver.model.dao;
+package cn.fan.campushelperserver.model.dao.response;
 
 import lombok.Setter;
 

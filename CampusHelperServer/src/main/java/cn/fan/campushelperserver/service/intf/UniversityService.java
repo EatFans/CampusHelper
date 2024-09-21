@@ -1,5 +1,9 @@
 package cn.fan.campushelperserver.service.intf;
 
+import cn.fan.campushelperserver.model.dao.request.AddUniversityRequest;
+import cn.fan.campushelperserver.model.dao.response.AddUniversityResponse;
+import cn.fan.campushelperserver.model.entity.University;
+
 import java.util.List;
 
 /**
@@ -7,4 +11,6 @@ import java.util.List;
  */
 public interface UniversityService {
     List<String> getAllSupportedUniversityNames();
+
+    AddUniversityResponse addUniversity(AddUniversityRequest addUniversityRequest);
 }

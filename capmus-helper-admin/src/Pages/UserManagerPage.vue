@@ -8,6 +8,7 @@
       <div class="main-content">
         <HeaderBar @sidebarValue="toggleSidebar" :pagePathList="pagePathList" />
 
+        <UserTable class="user-table" />
       </div>
     </div>
   </div>
@@ -18,17 +19,22 @@ import {computed, ref} from "vue";
 
 import SideBar from "@/components/SideBar.vue";
 import HeaderBar from "@/components/HeaderBar.vue";
+import UserTable from "@/components/UserTable.vue";
 
 // 定义一个状态来控制侧边栏的展开与折叠
 const isSidebarOpen = ref(true);
 
-const pageIndex = ref(0);
+const pageIndex = ref(2);
 
 // 定义页面路径显示的列表
 const pagePathList = ref([
   {
     title: '主页',
     url: '/dashboard'
+  },
+  {
+    title: '用户管理',
+    url: '/user-manager'
   }
 ]);
 
@@ -65,6 +71,7 @@ const toggleSidebar = (value) => {
   width: 100%;
   height: auto;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 
@@ -75,6 +82,7 @@ const toggleSidebar = (value) => {
   width: 100%;
   height: 2500px;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 
@@ -89,6 +97,11 @@ const toggleSidebar = (value) => {
   width: 100%;
   height: 2500px;
   margin-left: 50px;
+}
+
+.user-table {
+  margin-top: 100px;
+  margin-left: 20px;
 }
 
 </style>

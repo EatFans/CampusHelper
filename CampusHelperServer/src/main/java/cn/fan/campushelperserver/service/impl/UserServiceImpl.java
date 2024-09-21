@@ -1,7 +1,7 @@
 package cn.fan.campushelperserver.service.impl;
 
 import cn.fan.campushelperserver.mapper.UserMapper;
-import cn.fan.campushelperserver.model.dao.WeChatSessionResponse;
+import cn.fan.campushelperserver.model.dao.response.WeChatSessionResponse;
 import cn.fan.campushelperserver.model.entity.User;
 import cn.fan.campushelperserver.service.intf.RedisService;
 import cn.fan.campushelperserver.service.intf.UserService;

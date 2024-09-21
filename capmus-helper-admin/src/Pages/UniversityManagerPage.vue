@@ -8,6 +8,7 @@
       <div class="main-content">
         <HeaderBar @sidebarValue="toggleSidebar" :pagePathList="pagePathList" />
 
+        <UniversityTable class="university-table" />
       </div>
     </div>
   </div>
@@ -18,17 +19,22 @@ import {computed, ref} from "vue";
 
 import SideBar from "@/components/SideBar.vue";
 import HeaderBar from "@/components/HeaderBar.vue";
+import UniversityTable from "@/components/UniversityTable.vue";
 
 // 定义一个状态来控制侧边栏的展开与折叠
 const isSidebarOpen = ref(true);
 
-const pageIndex = ref(0);
+const pageIndex = ref(4);
 
 // 定义页面路径显示的列表
 const pagePathList = ref([
   {
     title: '主页',
     url: '/dashboard'
+  },
+  {
+    title: '学校管理',
+    url: 'university-manager'
   }
 ]);
 
@@ -91,4 +97,8 @@ const toggleSidebar = (value) => {
   margin-left: 50px;
 }
 
+.university-table {
+  margin-top: 100px;
+  margin-left: 20px;
+}
 </style>

@@ -1,7 +1,7 @@
 package cn.fan.campushelperserver.controller;
 
 import cn.fan.campushelperserver.constant.consist.ResponseStatus;
-import cn.fan.campushelperserver.model.dao.ApiResponse;
+import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.model.dao.request.CheckTokenRequest;
 import cn.fan.campushelperserver.model.dao.request.GetTokenRequest;
 import cn.fan.campushelperserver.service.intf.AuthService;

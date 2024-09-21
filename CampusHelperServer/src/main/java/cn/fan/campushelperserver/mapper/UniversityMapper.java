@@ -1,5 +1,6 @@
 package cn.fan.campushelperserver.mapper;
 
+import cn.fan.campushelperserver.model.entity.University;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,4 +15,17 @@ public interface UniversityMapper {
      * @return 返回所有学校的名称，类型为List<String>
      */
     List<String> getAllUniversityNames();
+
+    /**
+     * 检查是否存在该大学
+     * @param university 大学名称
+     * @return 返回最后查询的结果
+     */
+    boolean checkUniversityExists(String university);
+
+    /**
+     * 插入一条大学信息数据
+     * @param university 大学信息
+     */
+    void insertUniversity(University university);
 }
