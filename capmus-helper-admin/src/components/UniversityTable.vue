@@ -1,47 +1,130 @@
 <template>
   <div class="university-table-container">
-    <!--学校数据表格头部信息栏-->
-    <div class="university-table-header">
-      <div class="id-info-item">
-        <p>id</p>
-      </div>
+    <!--校园列表表格-->
+    <table class="university-table" >
+      <!--表格头-->
+      <thead>
+        <tr>
+          <td class="university-table-head" style="width: 5%">id</td>
+          <td class="university-table-head" style="width: 23%">学校名称</td>
+          <td class="university-table-head" style="width: 10%">省份</td>
+          <td class="university-table-head" style="width: 10%">城市</td>
+          <td class="university-table-head" style="width: 10%">更新者</td>
+          <td class="university-table-head" style="width: 16%">更新者uuid</td>
+          <td class="university-table-head" style="width: 14%">更新时间</td>
+          <td class="university-table-head" style="width: 12%">操作</td>
+        </tr>
+      </thead>
+      <!--表格主体-->
+      <tbody>
+        <tr v-for="(item, index) in universities" :key="index">
+          <td class="university-table-body">{{item.id}}</td>
+          <td class="university-table-body">{{item.university}}</td>
+          <td class="university-table-body">{{item.province}}</td>
+          <td class="university-table-body">{{item.city}}</td>
+          <td class="university-table-body">{{item.updatedByName}}</td>
+          <td class="university-table-body">{{item.updatedByUuid}}</td>
+          <td class="university-table-body">{{item.updatedAt}}</td>
+          <td class="university-table-body-button">
+            <div class="reset-university-button">
+              <p>修改</p>
+            </div>
+            <div class="delete-university-button">
+              <p>删除</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-      <div class="university-name-info-item">
-        <p>大学校区名称</p>
-      </div>
-    </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 
+const universities = ref([
+  { id: 1, university: '南通职业大学（本部）', province: '江苏省', city:'南通市',updatedByName:'EatFan', updatedByUuid: 'fdahfjdksahe121321312', updatedAt: '2024/9/21' },
+  { id: 2, university: '南通职业大学（钟秀校区）', province: '江苏省', city:'南通市',updatedByName:'EatFan', updatedByUuid: 'fdahfjdksahe121321312', updatedAt: '2024/9/21' },
+  { id: 3, university: '南通职业大学（海门校区）', province: '江苏省', city:'南通市',updatedByName:'EatFan', updatedByUuid: 'fdahfjdksahe121321312', updatedAt: '2024/9/21' },
+])
 </script>
 
 
 <style scoped>
-.university-table-container {
-  width: 200px;
-  height: 300px;
+.reset-university-button {
+  width: 45px;
+  height: 30px;
+  background: #1d8bf5;
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  border-radius: 6px;
 }
 
-.university-table-header {
-  height: 40px;
-  border: #b7bbbf solid 1px;
+.delete-university-button {
+  width: 45px;
+  height: 30px;
+  background: #f44847;
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+.university-table-body-button {
+  height: 44px;
   display: flex;
   flex-direction: row;
-}
-
-.id-info-item {
-  width: 80px;
-  height: 100%;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  border-right: #b7bbbf solid 1px;
+  align-items: center;
+  border-right: #b7c3d1 solid 1px;
+  border-bottom: #b7c3d1 solid 1px;
 }
 
-.id-info-item p {
-  color: black;
-  font-size: 18px;
+.university-table-body {
+  height: 44px;
+  text-align: center;
+  border: #b7c3d1 solid 1px;
 }
+
+.university-table caption {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 1em 0;
+}
+
+
+
+.university-table-head {
+  height: 44px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: #b7bbbf solid 1px;
+}
+
+thead, tr {
+  width: 100%;
+}
+
+.university-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+.university-table-container {
+  width: 95%;
+  height: 300px;
+  margin-top: 100px;
+  margin-left: 20px;
+}
+
 </style>

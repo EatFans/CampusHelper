@@ -48,7 +48,7 @@ const goToPage = (url) => {
   height: 50px;
   display: flex;
   flex-direction: row;
-
+  background: #fff;
 }
 
 .sidebar-button {

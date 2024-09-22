@@ -1,6 +1,7 @@
 package cn.fan.campushelperserver.controller;
 
 import cn.fan.campushelperserver.constant.consist.ResponseStatus;
+import cn.fan.campushelperserver.model.dao.response.AddUniversityResponse;
 import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.model.dao.request.AddUniversityRequest;
 import cn.fan.campushelperserver.service.intf.UniversityService;
@@ -29,7 +30,7 @@ public class UniversityController {
     @PostMapping("/add")
     public ResponseEntity<?> addUniversity(@RequestBody AddUniversityRequest addUniversityRequest){
         // 将请求体的数据传递给UniversityService业务类中，处理完返回是否成功执行
-
-        return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS,"测试成功！",addUniversityRequest));
+        AddUniversityResponse addUniversityResponse = universityService.addUniversity(addUniversityRequest);
+        return ResponseEntity.ok(addUniversityResponse);
     }
 }

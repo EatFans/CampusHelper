@@ -6,8 +6,19 @@
     <!--主要容器-->
     <div class="main-container">
       <div class="main-content">
+        <!--顶部头部栏-->
         <HeaderBar @sidebarValue="toggleSidebar" :pagePathList="pagePathList" />
+        <!--页面右侧主要区域-->
+        <div class="app-main">
+          <!--显示数据的容器-->
+          <div class="data-display-container">
+            <!--用户数量-->
+            <div class="data-display-item">
+              <h1>用户数量</h1>
+            </div>
+          </div>
 
+        </div>
       </div>
     </div>
   </div>
@@ -24,12 +35,15 @@ const isSidebarOpen = ref(true);
 
 const pageIndex = ref(0);
 
+
+
 // 定义页面路径显示的列表
 const pagePathList = ref([
   {
     title: '主页',
     url: '/dashboard'
-  }
+  },
+
 ]);
 
 
@@ -65,6 +79,7 @@ const toggleSidebar = (value) => {
   width: 100%;
   height: auto;
   overflow-y: auto;
+  background: #f0f0f0;
 }
 
 
@@ -72,23 +87,44 @@ const toggleSidebar = (value) => {
   隐藏sidebar后的main-container容器的样式
  */
 .hiddenSidebar .main-container {
-  width: 100%;
-  height: 2500px;
   overflow-y: auto;
+  background: #f0f0f0;
 }
 
 
 .main-content {
   margin-left: 200px;
-  width: 100%;
-  height: 2500px;
 }
 
 
 .hiddenSidebar .main-content {
   width: 100%;
-  height: 2500px;
   margin-left: 50px;
 }
 
+.app-main {
+  width: 100%;
+  height: 100%;
+}
+
+.data-display-container {
+  width: 100%;
+  height: 140px;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+
+  border: black solid 1px;
+}
+
+.data-display-item {
+  width: 250px;
+  height: 120px;
+  background: white;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
 </style>

@@ -8,7 +8,8 @@
       <div class="main-content">
         <HeaderBar @sidebarValue="toggleSidebar" :pagePathList="pagePathList" />
 
-        <UserTable class="user-table" />
+        <UniversityTable class="university-table" />
+
       </div>
     </div>
   </div>
@@ -19,12 +20,14 @@ import {computed, ref} from "vue";
 
 import SideBar from "@/components/SideBar.vue";
 import HeaderBar from "@/components/HeaderBar.vue";
-import UserTable from "@/components/UserTable.vue";
+import UniversityTable from "@/components/UniversityTable.vue";
 
 // 定义一个状态来控制侧边栏的展开与折叠
 const isSidebarOpen = ref(true);
 
 const pageIndex = ref(2);
+
+
 
 // 定义页面路径显示的列表
 const pagePathList = ref([
@@ -71,7 +74,7 @@ const toggleSidebar = (value) => {
   width: 100%;
   height: auto;
   overflow-y: auto;
-  overflow-x: hidden;
+  background: #f0f0f0;
 }
 
 
@@ -79,29 +82,23 @@ const toggleSidebar = (value) => {
   隐藏sidebar后的main-container容器的样式
  */
 .hiddenSidebar .main-container {
-  width: 100%;
-  height: 2500px;
   overflow-y: auto;
-  overflow-x: hidden;
+  background: #f0f0f0;
 }
 
 
 .main-content {
   margin-left: 200px;
-  width: 100%;
-  height: 2500px;
 }
 
 
 .hiddenSidebar .main-content {
   width: 100%;
-  height: 2500px;
   margin-left: 50px;
 }
 
-.user-table {
+.university-table {
   margin-top: 100px;
   margin-left: 20px;
 }
-
 </style>
