@@ -1,0 +1,16 @@
+<view class="home-menu">
+  <scroll-view class="home-menu-container" scroll-x="true" paging-enabled="true" show-scrollbar="false" bindscroll="onScroll">
+    <view class="home-menu-content">
+      <view class="home-menu-item" wx:for="{{homeMenuItems}}" wx:for-item="item" wx:key="id" bindtap="goToPage" data-link="{{item.link}}">
+        <image class="home-menu-item-icon" src="{{item.icon}}" mode="aspectFill"/>
+        <text class="home-menu-item-text">{{item.text}}</text>
+      </view>
+    </view>
+
+  </scroll-view>
+  <!-- 分页指示器 -->
+  <view class="indicator-container">
+    <view class="indicator" wx:for="{{indicators}}" wx:key="index" data-index="{{index}}" style="background-color: {{index === currentPage ? '#000' : '#ccc'}}"></view>
+  </view>
+</view>
+

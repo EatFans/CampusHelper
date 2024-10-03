@@ -1,0 +1,6 @@
+<scroll-view>
+  <nav-bar title="校园墙" hasBack="{{true}}"/>
+  <view class="main-container">
+  
+  </view>
+</scroll-view>
