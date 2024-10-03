@@ -6,6 +6,8 @@ import cn.fan.campushelperserver.model.dao.request.AddUniversityRequest;
 import cn.fan.campushelperserver.model.dao.response.AddUniversityResponse;
 import cn.fan.campushelperserver.model.entity.University;
 import cn.fan.campushelperserver.service.intf.UniversityService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,5 +67,13 @@ public class UniversityServiceImpl implements UniversityService {
     @Override
     public List<University> getUniversity(){
         return null;
+    }
+
+
+    @Override
+    public Page<University> getUniversities(int page, int size){
+        PageHelper.startPage(page,size);
+        List<University> universityList = universityMapper.findAll();
+        return (Page<University>) universityList;
     }
 }

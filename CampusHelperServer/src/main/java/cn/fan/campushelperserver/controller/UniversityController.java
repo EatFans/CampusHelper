@@ -1,15 +1,20 @@
 package cn.fan.campushelperserver.controller;
 
 import cn.fan.campushelperserver.constant.consist.ResponseStatus;
+import cn.fan.campushelperserver.model.dao.request.GetUniversitiesRequest;
 import cn.fan.campushelperserver.model.dao.response.AddUniversityResponse;
 import cn.fan.campushelperserver.model.dao.request.AddUniversityRequest;
 import cn.fan.campushelperserver.model.dao.response.ApiResponse;
+import cn.fan.campushelperserver.model.entity.University;
 import cn.fan.campushelperserver.service.intf.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.github.pagehelper.Page;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/university")
@@ -33,9 +38,18 @@ public class UniversityController {
     }
 
     @PostMapping("/getUniversities")
-    public ResponseEntity<?> getUniversitiesByPage(@RequestParam int page, @RequestParam int size){
+    public ResponseEntity<?> getUniversitiesByPage(@RequestBody GetUniversitiesRequest request){
+        Page<University> universityPage = universityService.getUniversities(request.getPage(), request.getSize());
 
-        return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS, "测试接口"));
+        // 构造返回的数据
+        Map<String, Object> response = new HashMap<>();
+        response.put("total",universityPage.getTotal());
+        response.put("pages",universityPage.getPages());
+        response.put("currentPage",universityPage.getPageNum());
+        response.put("pageSize",universityPage.getPageSize());
+        response.put("universities",universityPage.getResult());
+
+        return ResponseEntity.ok(response);
     }
 
 }

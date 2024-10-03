@@ -28,4 +28,6 @@ public interface UniversityMapper {
      * @param university 大学信息
      */
     void insertUniversity(University university);
+
+    List<University> findAll();
 }

@@ -16,4 +16,8 @@
     <insert id="insertUniversity" parameterType="cn.fan.campushelperserver.model.entity.University">
         INSERT INTO universities (university,province,city,updatedByName,updatedByUuid,updatedAt) VALUES (#{university}, #{province},#{city},#{updatedByName},#{updatedByUuid},#{updatedAt})
     </insert>
+
+    <select id="findAll" resultType="cn.fan.campushelperserver.model.entity.University">
+        SELECT * FROM universities
+    </select>
 </mapper>
