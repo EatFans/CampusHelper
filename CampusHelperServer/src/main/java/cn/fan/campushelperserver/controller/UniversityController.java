@@ -14,9 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/university")
 public class UniversityController {
-
     private final UniversityService universityService;
-
     @Autowired
     public UniversityController(UniversityService universityService){
         this.universityService = universityService;
@@ -34,10 +32,8 @@ public class UniversityController {
         return ResponseEntity.ok(addUniversityResponse);
     }
 
-    @GetMapping("/getUniversities")
+    @PostMapping("/getUniversities")
     public ResponseEntity<?> getUniversitiesByPage(@RequestParam int page, @RequestParam int size){
-
-        
 
         return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS, "测试接口"));
     }

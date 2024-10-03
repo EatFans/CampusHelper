@@ -6,6 +6,7 @@ import UserManagerPage from "@/Pages/UserManagerPage.vue";
 import MemberManagerPage from "@/Pages/MemberManagerPage.vue";
 import UniversityManagerPage from "@/Pages/UniversityManagerPage.vue";
 import TaskManagerPage from "@/Pages/TaskManagerPage.vue";
+import authAPI from "@/api/admin";
 
 
 // 创建路由
@@ -79,8 +80,34 @@ const router = createRouter({
     ]
 });
 
-router.beforeEach((to, from, next) => {
+
+// 检查 token 是否有效的异步函数
+const checkToken = async (token) => {
+    try {
+        const response = await authAPI.checkToken(token); // 假设您有一个 checkToken 的 API
+        const status = response.data.status;
+        return status === 'success';
+    } catch (error) {
+        return false;
+    }
+};
+
+router.beforeEach( (to, from, next) => {
     // 检查用户是否登录
+    const token = localStorage.getItem("token");
+
+    if (token){
+        checkToken({token}).then(isValid => {
+            if (!isValid) {
+                console.log('token无效，直接跳转到/login');
+                router.push('/login');
+            }
+
+        });
+
+    } else {
+        router.push('/login');
+    }
 
     /* 路由发生变化修改页面title */
     if (to.meta.title) {
