@@ -15,7 +15,12 @@ const adminAPI = {
     // 验证token
     checkToken(credentials) {
         return axiosInstance.post('/checkToken', credentials);
+    },
+    // 通过token获取管理员用户数据
+    getAdminByToken(token) {
+        return axiosInstance.post('/getAdmin', token)
     }
+
 
 };
 

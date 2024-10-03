@@ -13,7 +13,10 @@ const universityAPI = {
     getUniversityPages(credentials) {
         return axiosInstance.post('/university/getUniversities', credentials);
     },
-
+    // 添加新的大学信息数据
+    addNewUniversityData(credentials) {
+        return axiosInstance.post('/university/add', credentials);
+    }
 
 };
 

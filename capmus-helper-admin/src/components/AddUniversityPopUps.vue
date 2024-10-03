@@ -21,6 +21,9 @@
         <div v-show="isError" class="put-university-info-error-message">
           <p>{{ errorMessage }}</p>
         </div>
+        <div v-show="isSuccess" class="put-university-info-success-message">
+          <p>{{successMessage}}</p>
+        </div>
       </div>
       <!-- 操作按钮 -->
       <div class="add-university-pop-ups-operate-button-box">
@@ -37,6 +40,8 @@
 
 <script setup>
 import {defineProps, ref} from 'vue';
+import adminAPI from "@/api/admin";
+import universityAPI from "@/api/university";
 
 // 定义 props
 // eslint-disable-next-line no-unused-vars
@@ -65,38 +70,80 @@ const updatedAt = ref();
 const isError = ref(false);
 const errorMessage = ref("");
 
-const putNewUniversityInfo = () => {
-  console.log("名称", university.value);
-  console.log("省份",province.value);
-  console.log("城市",city.value);
-  if (university.value === ""){
+const isSuccess = ref(false);
+const successMessage = ref("");
+
+const putNewUniversityInfo = async () => {
+  if (university.value === "") {
     isError.value = true;
     errorMessage.value = "学校名称不能为空！";
     return;
   }
-
-  if (province.value === ""){
+  if (province.value === "") {
     isError.value = true;
     errorMessage.value = "学校所在省份不能为空！";
     return;
   }
-  if (city.value === ""){
+  if (city.value === "") {
     isError.value = true;
     errorMessage.value = "学校所在城市不能为空！";
     return;
   }
-
   const localDate = new Date();
   updatedAt.value = localDate.toISOString();
-  console.log(updatedAt.value);
-
-  if (updatedByName.value === "" && updatedByUuid.value === ""){
+  if (updatedByName.value === "" && updatedByUuid.value === "") {
     const token = localStorage.getItem("token");
-    // TODO: 从本地获取Token，通过token来获取管理员用户名和uuid
-    console.log(token);
+    // 通过token获取管理员用户数据
+    const admin = await getAdminData(token);
+    updatedByName.value = admin.nickName;
+    updatedByUuid.value = admin.uuid;
+    addNewUniversity();
+
   }
 }
 
+/**
+ * 添加新的大学信息数据
+ * @returns {Promise<void>}
+ */
+const addNewUniversity = async () => {
+  const dataObject = {
+    university: university.value,
+    province: province.value,
+    city: city.value,
+    updatedByName: updatedByName.value,
+    updatedByUuid: updatedByUuid.value,
+    updatedAt: updatedAt.value
+  };
+  const response = await universityAPI.addNewUniversityData(dataObject);
+  const status = response.data.status;
+  const message = response.data.message;
+  if (status === "success") {
+    isSuccess.value = true;
+    successMessage.value = message;
+  } else {
+    isError.value = true;
+    errorMessage.value = message;
+  }
+}
+
+/**
+ * 获取管理员用户数据
+ * @param token token登录令牌
+ */
+const getAdminData = async (token) => {
+  const response = await adminAPI.getAdminByToken({token});
+  const status = response.data.status;
+  const message = response.data.message;
+  const data = response.data.data;
+  if (status === "success") {
+    return data;
+  } else {
+    isError.value = true;
+    errorMessage.value = message;
+  }
+
+}
 </script>
 
 
@@ -211,7 +258,7 @@ const putNewUniversityInfo = () => {
   font-size: 14px;
 }
 
-.put-university-info-error-message {
+.put-university-info-error-message, .put-university-info-success-message {
   height: 50px;
   width: 96%;
   margin: 10px auto;
@@ -220,6 +267,11 @@ const putNewUniversityInfo = () => {
 
 .put-university-info-error-message p {
   color: red;
+  font-size: 14px;
+  margin-left: 60px;
+}
+.put-university-info-success-message p {
+  color: yellowgreen;
   font-size: 14px;
   margin-left: 60px;
 }

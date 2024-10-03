@@ -2,6 +2,7 @@ package cn.fan.campushelperserver.controller;
 
 import cn.fan.campushelperserver.model.dao.request.AdminLoginRequest;
 import cn.fan.campushelperserver.model.dao.request.CreateAdminRequest;
+import cn.fan.campushelperserver.model.dao.request.GetAdminRequest;
 import cn.fan.campushelperserver.model.dao.request.TokenRequest;
 import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.service.intf.AdminService;
@@ -35,5 +36,10 @@ public class AdminController {
     @PostMapping("/checkToken")
     public ResponseEntity<?> checkToken(@RequestBody TokenRequest request){
         return ResponseEntity.ok(adminService.checkToken(request));
+    }
+
+    @PostMapping("/getAdmin")
+    public ResponseEntity<?> getAdmin(@RequestBody GetAdminRequest request){
+        return ResponseEntity.ok(adminService.getAdminByToken(request));
     }
 }

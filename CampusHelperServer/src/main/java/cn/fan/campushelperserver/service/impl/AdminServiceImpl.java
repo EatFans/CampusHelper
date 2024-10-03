@@ -4,6 +4,7 @@ import cn.fan.campushelperserver.constant.consist.ResponseStatus;
 import cn.fan.campushelperserver.mapper.AdminMapper;
 import cn.fan.campushelperserver.model.dao.request.AdminLoginRequest;
 import cn.fan.campushelperserver.model.dao.request.CreateAdminRequest;
+import cn.fan.campushelperserver.model.dao.request.GetAdminRequest;
 import cn.fan.campushelperserver.model.dao.request.TokenRequest;
 import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.model.entity.Admin;
@@ -116,5 +117,22 @@ public class AdminServiceImpl implements AdminService {
             return new ApiResponse(ResponseStatus.SUCCESS,"token令牌有效");
         else
             return new ApiResponse(ResponseStatus.ERROR,"token令牌已经失效");
+    }
+
+    @Override
+    public ApiResponse getAdminByToken(GetAdminRequest request) {
+        // 检查token是否有效
+        if (!redisService.valueExists(request.getToken())){
+            return new ApiResponse(ResponseStatus.ERROR,"token已经失效了");
+        }
+
+        //然后通过token在redis缓存中获取管理员用户的uuid
+        String uuid = redisService.getKey(request.getToken());
+        // 通过uuid来查找管理员用户数据
+        Admin admin = adminMapper.findAdminByUuid(uuid);
+        if (admin == null){
+            return new ApiResponse(ResponseStatus.ERROR,"无法获取管理员用户数据！admin为null");
+        }
+        return new ApiResponse(ResponseStatus.SUCCESS,"成功获取管理员用户数据",admin);
     }
 }
