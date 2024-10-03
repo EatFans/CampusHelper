@@ -1,10 +1,11 @@
 package cn.fan.campushelperserver.service.intf;
 
+import cn.fan.campushelperserver.model.dao.request.AdminLoginRequest;
 import cn.fan.campushelperserver.model.dao.request.CreateAdminRequest;
 import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 
 public interface AdminService {
-    public ApiResponse login();
+    ApiResponse adminLogin(AdminLoginRequest request);
 
-    public ApiResponse createAdmin(CreateAdminRequest createAdminRequest);
+    ApiResponse createAdmin(CreateAdminRequest createAdminRequest);
 }

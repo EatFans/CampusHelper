@@ -2,6 +2,7 @@ package cn.fan.campushelperserver.service.impl;
 
 import cn.fan.campushelperserver.constant.consist.ResponseStatus;
 import cn.fan.campushelperserver.mapper.AdminMapper;
+import cn.fan.campushelperserver.model.dao.request.AdminLoginRequest;
 import cn.fan.campushelperserver.model.dao.request.CreateAdminRequest;
 import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.model.entity.Admin;
@@ -20,13 +21,24 @@ public class AdminServiceImpl implements AdminService {
 
 
     @Override
-    public ApiResponse login(){
+    public ApiResponse adminLogin(AdminLoginRequest request){
         // 检查管理员账号是否存在
+        String username = request.getUsername();
+        if (!adminMapper.checkUsernameExists(username)){
+            return new ApiResponse(ResponseStatus.ERROR,"不存在该账号");
+        }
+        // 通过username获取该用户
+        Admin admin = adminMapper.findAdminByUsername(username);
+        if (admin == null){
+            return new ApiResponse(ResponseStatus.ERROR,"该用户不存在");
+        }
 
-        // 检查管理员密码是否正确
+        if (!request.getPassword().equalsIgnoreCase(admin.getPassword())){
+            return new ApiResponse(ResponseStatus.ERROR,"密码错误");
+        }
 
         // 生存一个登录令牌用于登录
-
+        // TODO: 待完成
 
         return new ApiResponse(ResponseStatus.SUCCESS,"");
     }

@@ -24,4 +24,8 @@
     <select id="checkUuidExists" parameterType="String" resultType="boolean">
         SELECT COUNT(*) > 0 FROM admin WHERE uuid = #{uuid}
     </select>
+
+    <select id="findAdminByUsername" parameterType="String" resultType="cn.fan.campushelperserver.model.entity.Admin">
+        SELECT * FROM admin WHERE username = #{username}
+    </select>
 </mapper>

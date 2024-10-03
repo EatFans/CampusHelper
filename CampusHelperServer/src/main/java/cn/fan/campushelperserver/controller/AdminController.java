@@ -1,5 +1,6 @@
 package cn.fan.campushelperserver.controller;
 
+import cn.fan.campushelperserver.model.dao.request.AdminLoginRequest;
 import cn.fan.campushelperserver.model.dao.request.CreateAdminRequest;
 import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.service.intf.AdminService;
@@ -21,8 +22,8 @@ public class AdminController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(){
-        return ResponseEntity.ok(adminService.login());
+    public ResponseEntity<?> login(@RequestBody AdminLoginRequest request){
+        return ResponseEntity.ok(adminService.adminLogin(request));
     }
 
     @PostMapping("/create")
