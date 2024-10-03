@@ -12,6 +12,16 @@
           <div class="add-university-button" @click="toggleAddUniversityPopUp">
             <p>添加大学</p>
           </div>
+
+          <div class="paginator-container">
+            <div class="last-page-button" @click="goToLastPage">
+              <p>上一页</p>
+            </div>
+
+            <div class="next-page-button" @click="goToNextPage">
+              <p>下一页</p>
+            </div>
+          </div>
         </div>
 
         <UniversityTable class="university-table" :universityList="universityList" />
@@ -44,8 +54,10 @@ const pageIndex = ref(4);
 const universityList = ref([]);
 const universityAmount = ref(0);
 
-const page = ref(1);
-const size = ref(20);
+const currentPage = ref(1);  //当前选择的页面
+const size = ref(20);    // 一页多少条数据
+const pageAmount = ref(0);   // 总共多少页
+
 
 /**
  * 切换添加大学弹窗开启与关闭
@@ -72,7 +84,7 @@ onMounted(() => {
 const fetchUniversities = async () => {
   try {
     const params = {
-      page: page.value, // 当前页码
+      page: currentPage.value, // 当前页码
       size: size.value // 每页显示的条数
     };
     console.log(params)
@@ -80,6 +92,7 @@ const fetchUniversities = async () => {
     console.log(response);
     universityList.value = response.data.universities;
     universityAmount.value = response.data.total;
+    pageAmount.value = response.data.pages;
   } catch (error) {
     console.error('获取大学信息失败:', error);
   }
@@ -110,7 +123,25 @@ const toggleSidebar = (value) => {
   isSidebarOpen.value = value;
 };
 
+/**
+ * 前往下一页
+ */
+const goToNextPage = () => {
+  if (currentPage.value < pageAmount.value) {
+    currentPage.value++;
+    fetchUniversities();
+  }
+}
 
+/**
+ * 返回上一页
+ */
+const goToLastPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value -= 1;
+    fetchUniversities();
+  }
+}
 
 </script>
 
@@ -158,6 +189,8 @@ const toggleSidebar = (value) => {
   width: 100%;
   height: 30px;
   margin-top: 10px;
+  display: flex;
+  flex-direction: row;
 }
 
 .add-university-button {
@@ -179,6 +212,32 @@ const toggleSidebar = (value) => {
   font-size: 13px;
 }
 
+.paginator-container {
+  width: 400px;
+  height: 100%;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  /*border: black solid 1px;*/
+}
+
+.last-page-button, .next-page-button {
+  width: 40px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #b7c3d1 solid 1px;
+  margin-left: 10px;
+}
+
+.last-page-button:hover, .next-page-button:hover {
+  background: #9da3aa;
+}
+
+.last-page-button p,.next-page-button p {
+  font-size: 12px;
+}
 
 
 </style>

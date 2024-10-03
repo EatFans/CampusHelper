@@ -57,7 +57,7 @@ const emit = defineEmits(['isAddUniversityPopUp']);
 
 const sendIsAddUniversityPopUp = () => {
   emit("isAddUniversityPopUp", !props.isAddUniversityPopUps);
-  console.log("isAddUniversityPopUp", props.isAddUniversityPopUps);
+  window.location.reload();
 }
 
 const university = ref("");

@@ -16,4 +16,6 @@ public interface AdminMapper {
     boolean checkUuidExists(String uuid);
 
     Admin findAdminByUsername(String username);
+
+    Admin findAdminByUuid(String uuid);
 }

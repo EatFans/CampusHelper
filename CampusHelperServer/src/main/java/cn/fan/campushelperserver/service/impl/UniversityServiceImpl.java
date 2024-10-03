@@ -53,7 +53,7 @@ public class UniversityServiceImpl implements UniversityService {
         // 检查university数据对象是否成功插入数据库中
         if (universityMapper.checkUniversityExists(university.getUniversity())){
             response.setStatus(ResponseStatus.SUCCESS);
-            response.setMessage("新的大学数据已经添加保存到数据库中!");
+            response.setMessage("新的大学数据已经添加保存!");
             response.setData(university);
             return response;
         } else {

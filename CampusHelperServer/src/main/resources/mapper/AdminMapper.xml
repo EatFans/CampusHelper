@@ -28,4 +28,8 @@
     <select id="findAdminByUsername" parameterType="String" resultType="cn.fan.campushelperserver.model.entity.Admin">
         SELECT * FROM admin WHERE username = #{username}
     </select>
+
+    <select id="findAdminByUuid" parameterType="String" resultType="cn.fan.campushelperserver.model.entity.Admin">
+        SELECT * FROM admin WHERE uuid = #{uuid}
+    </select>
 </mapper>
