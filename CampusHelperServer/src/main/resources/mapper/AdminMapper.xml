@@ -6,7 +6,7 @@
 <mapper namespace="cn.fan.campushelperserver.mapper.AdminMapper">
 
     <insert id="insertAdmin" parameterType="cn.fan.campushelperserver.model.entity.User">
-        INSERT INTO admin (uuid,username,password,phoneNumber,realName,role) values (#{uuid},#{username},#{password},#{phoneNumber},#{realName},#{role})
+        INSERT INTO admin (uuid,username,password,nickName,wechat,phoneNumber,realName,role) values (#{uuid},#{username},#{password},#{nickName},#{wechat},#{phoneNumber},#{realName},#{role})
     </insert>
 
     <select id="checkUsernameExists" parameterType="String" resultType="boolean">

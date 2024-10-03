@@ -71,6 +71,8 @@ public class AdminServiceImpl implements AdminService {
 
         admin.setUsername(createAdminRequest.getUsername());
         admin.setPassword(createAdminRequest.getPassword());
+        admin.setNickName(createAdminRequest.getNickName());
+        admin.setWechat(createAdminRequest.getWechat());
         admin.setPhoneNumber(createAdminRequest.getPhoneNumber());
         admin.setRealName(createAdminRequest.getRealName());
         // 设置默认角色身份
