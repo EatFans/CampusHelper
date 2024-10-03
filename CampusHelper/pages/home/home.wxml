@@ -12,7 +12,7 @@
     </view>
   </picker>
 </view>
-<!--学校定位信息-->
+
 
 
 
@@ -32,78 +32,24 @@
     </view>
   </view>
   <!--功能菜单栏-->
-  <view class="header-menu">
-    <!--菜单第一行-->
-    <view class="header-menu-row">
-      <!--代取外卖功能按钮-->
-      <view class="header-menu-item">
-        <view class="header-menu-item-icon">
-          <image src="../../images/homeMenuIcon/takeaway.png" mode="aspectFill"></image>
-        </view>
-        <text>代取外卖</text>
-      </view>
-      <!--代取快递功能按钮-->
-      <view class="header-menu-item">
-        <view class="header-menu-item-icon">
-          <image src="../../images/homeMenuIcon/pick_up_the_courier.png" mode="aspectFill"></image>
-        </view>
-        <text>代取快递</text>
-      </view>
-      <!--代寄快递功能按钮-->
-      <view class="header-menu-item">
-        <view class="header-menu-item-icon">
-          <image src="../../images/homeMenuIcon/send_courier.png" mode="aspectFill"></image>
-        </view>
-        <text>代寄快递</text>
-      </view>
-      <!--万能任务-->
-      <view class="header-menu-item">
-        <view class="header-menu-item-icon">
-          <image src="../../images/homeMenuIcon/versatile_quest.png" mode="aspectFill"></image>
-        </view>
-        <text>万能任务</text>
-      </view>
-    </view>
-    <!--菜单第二行-->
-    <view class="header-menu-row">
-      <view class="header-menu-item">
-        <view class="header-menu-item-icon">
-          <image src="../../images/homeMenuIcon/recommend.png" mode="aspectFill"></image>
-        </view>
-        <text>待定</text>
-      </view>
-      <view class="header-menu-item">
-        <view class="header-menu-item-icon">
-          <image src="../../images/homeMenuIcon/lost_and_found.png" mode="aspectFill"></image>
-        </view>
-        <text>待定</text>
-      </view>
-      <view class="header-menu-item">
-        <view class="header-menu-item-icon">
-          <image src="../../images/homeMenuIcon/flea_market.png" mode="aspectFill"></image>
-        </view>
-        <text>待定</text>
-      </view>
-      <view class="header-menu-item">
-        <view class="header-menu-item-icon">
-          <image src="../../images/homeMenuIcon/vindicate.png" mode="aspectFill"></image>
-        </view>
-        <text>待定</text>
-      </view>
-    </view>
-  </view>
+  <home-menu />
+
 </view>
 <!--主要区域部分-->
 <view class="home-page-body">
-  <!--热门圈子推荐容器-->
+  <!--TODO:校园墙文案轮博-->
   <view class="body-circle-recommendation-container">
     <view class="circle-recommendation-title">
       <view class="circle-recommendation-title-icon">
         <image src="../../images/homeImages/circle_remmendcation.png" mode="aspectFill"></image>
       </view>
-      <text>热门圈子</text>
+      <text>校园</text>
     </view>
   </view>
+
+  <!--美食推荐轮博图--> 
+
+
   <!--热门商家推荐容器-->
   <view class="body-business-recommendation-container">
     <view class="business-recommendation-title">

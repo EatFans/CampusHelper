@@ -6,7 +6,7 @@ page {
 }
 
 .home-page-nav-bar {
-  background: white;
+  background:  #f0d84d;
 }
 
 .university-info-box {
@@ -43,28 +43,23 @@ page {
 }
 
 .home-page-header {
-  height: auto;
   /* border: red solid 1px; */
-  background: white;
-  margin-top: 1px;
-  border-bottom-left-radius: 8%;
-  border-bottom-right-radius: 8%;
+  /* background: white; */
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .header-image {
   margin: 0 auto;
-  margin-top: 5px;
   /* background: red; */
-  height: 180px;
-  width: 96%;
-  border-radius: 8px;
+  height: 200px;
+  width: 96; /*原本是96%，测试改成100%*/
 }
 
 .header-image image {
   width: 100%;
   height: 100%;
   object-fit: cover;          /* 保持图片比例并填充容器 */
-  border-radius: 8px;
 }
 
 .news-text-box {
@@ -114,60 +109,6 @@ page {
     transform: translateX(-100%); /* 向左滚动到完全外部 */
   }
 }
-
-.header-menu {
-  width: 92%;
-  height: 180px;
-  margin: 0 auto;
-  margin-top: 15px;
-  /* border: green solid 1px; */
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.header-menu-row {
-  width: 100%;
-  height: 50%;
-  /* background: green; */
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.header-menu-item {
-  width: 18%;
-  height: 100%; /* 86%适合这个功能图标高度 */
-  /* background: red; */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items:center;
-  margin: 0 auto;
-}
-
-.header-menu-item-icon {
-  width: 48px;
-  height: 48px;
-  background: greenyellow;
-  border-radius: 50%;
-}
-
-.header-menu-item-icon image {
-  width: 100%;
-  height: 100%;
-
-}
-
-.header-menu-item text {
-  /* margin-top: 100%; */
-  margin-top: 5px;
-  font-size: 14px;
-  font-size: 400;
-  color: black;
-}
-
 
 .home-page-body {
   height: auto;

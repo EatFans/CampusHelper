@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fan.campushelperserver.mapper.AdminMapper">
+
+    <insert id="insertAdmin" parameterType="cn.fan.campushelperserver.model.entity.User">
+        INSERT INTO admin (uuid,username,password,phoneNumber,realName,role) values (#{uuid},#{username},#{password},#{phoneNumber},#{realName},#{role})
+    </insert>
+
+    <select id="checkUsernameExists" parameterType="String" resultType="boolean">
+        SELECT COUNT(*) > 0 FROM admin WHERE username = #{username}
+    </select>
+
+    <select id="checkPhoneNumberExists" parameterType="String" resultType="boolean">
+        SELECT COUNT(*) > 0 FROM admin WHERE phoneNumber = #{phoneNumber}
+    </select>
+
+    <select id="checkRealNameExists" parameterType="String" resultType="boolean">
+        SELECT COUNT(*) > 0 FROM admin WHERE realName = #{realName}
+    </select>
+
+    <select id="checkUuidExists" parameterType="String" resultType="boolean">
+        SELECT COUNT(*) > 0 FROM admin WHERE uuid = #{uuid}
+    </select>
+</mapper>

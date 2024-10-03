@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "home-menu": "/components/home-menu/home-menu"
+  },
   "navigationBarTitleText": "首页"
 }

@@ -2,8 +2,8 @@ package cn.fan.campushelperserver.controller;
 
 import cn.fan.campushelperserver.constant.consist.ResponseStatus;
 import cn.fan.campushelperserver.model.dao.response.AddUniversityResponse;
-import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.model.dao.request.AddUniversityRequest;
+import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.service.intf.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,4 +33,13 @@ public class UniversityController {
         AddUniversityResponse addUniversityResponse = universityService.addUniversity(addUniversityRequest);
         return ResponseEntity.ok(addUniversityResponse);
     }
+
+    @GetMapping("/getUniversities")
+    public ResponseEntity<?> getUniversitiesByPage(@RequestParam int page, @RequestParam int size){
+
+        
+
+        return ResponseEntity.ok(new ApiResponse(ResponseStatus.SUCCESS, "测试接口"));
+    }
+
 }

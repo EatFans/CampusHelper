@@ -39,7 +39,31 @@ public class UniversityServiceImpl implements UniversityService {
         }
 
         University university = new University();
-        // TODO: 添加单独大学信息接口待完成
+        // 设置university数据对象
+        university.setUniversity(addUniversityRequest.getUniversity());
+        university.setProvince(addUniversityRequest.getProvince());
+        university.setCity(addUniversityRequest.getCity());
+        university.setUpdatedByName(addUniversityRequest.getUpdatedByName());
+        university.setUpdatedByUuid(addUniversityRequest.getUpdatedByUuid());
+        university.setUpdatedAt(addUniversityRequest.getUpdatedAt());
+        // 将university数据对象插入到数据库中
+        universityMapper.insertUniversity(university);
+        // 检查university数据对象是否成功插入数据库中
+        if (universityMapper.checkUniversityExists(university.getUniversity())){
+            response.setStatus(ResponseStatus.SUCCESS);
+            response.setMessage("新的大学数据已经添加保存到数据库中!");
+            response.setData(university);
+            return response;
+        } else {
+            response.setStatus(ResponseStatus.ERROR);
+            response.setMessage("新的大学数据保存失败!");
+            return response;
+        }
+
+    }
+
+    @Override
+    public List<University> getUniversity(){
         return null;
     }
 }

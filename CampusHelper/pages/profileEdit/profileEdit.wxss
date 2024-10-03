@@ -72,7 +72,7 @@ page {
 .user-profile-info-update-button {
   width: 70%;
   height: 100%;
-  background: rgb(31, 116, 212);
+  background: #f0d84d;
   margin: 0 auto;
   border-radius: 20px;
   display: flex;

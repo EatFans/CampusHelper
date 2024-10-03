@@ -13,4 +13,6 @@ public interface UniversityService {
     List<String> getAllSupportedUniversityNames();
 
     AddUniversityResponse addUniversity(AddUniversityRequest addUniversityRequest);
+
+    List<University> getUniversity();
 }

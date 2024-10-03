@@ -122,9 +122,10 @@ thead, tr {
 
 .university-table-container {
   width: 95%;
-  height: 300px;
-  margin-top: 100px;
+  height: auto;
+  margin-top: 50px;
   margin-left: 20px;
+  background: #fff;
 }
 
 </style>
