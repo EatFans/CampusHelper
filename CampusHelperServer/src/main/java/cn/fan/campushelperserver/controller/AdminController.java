@@ -2,6 +2,7 @@ package cn.fan.campushelperserver.controller;
 
 import cn.fan.campushelperserver.model.dao.request.AdminLoginRequest;
 import cn.fan.campushelperserver.model.dao.request.CreateAdminRequest;
+import cn.fan.campushelperserver.model.dao.request.TokenRequest;
 import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.service.intf.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,8 @@ public class AdminController {
         return ResponseEntity.ok(adminService.createAdmin(createAdminRequest));
     }
 
-    @PostMapping("/getAdmin")
-    public ResponseEntity<?> getAdmins(){
-        return null;
+    @PostMapping("/checkToken")
+    public ResponseEntity<?> checkToken(@RequestBody TokenRequest request){
+        return ResponseEntity.ok(adminService.checkToken(request));
     }
 }

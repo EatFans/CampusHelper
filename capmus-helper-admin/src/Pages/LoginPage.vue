@@ -15,7 +15,7 @@
             <div class="login-box-input-username-input-icon">
               <i class='bx bxs-user'></i>
             </div>
-            <input type="text" id="username" value="" />
+            <input type="text" id="username" v-model="loginData.username" value="" />
           </div>
         </div>
         <!--输入密码-->
@@ -27,12 +27,12 @@
             <div class="login-box-input-password-input-icon">
               <i class='bx bxs-lock' ></i>
             </div>
-            <input type="password" id="password" value="" />
+            <input type="password" id="password" v-model="loginData.password" value="" />
           </div>
         </div>
 
         <!-- 登录按钮 -->
-        <div class="login-box-button-item" @click="toggleUsernameTrue">
+        <div class="login-box-button-item" @click="login">
           <button class="login-box-button">登录</button>
         </div>
 
@@ -43,11 +43,39 @@
 
 <script setup>
 import {ref} from "vue";
+import authAPI from "@/api/admin";
+import router from "@/router";
 
-const isUsernameTrue = ref(false);
+const loginData = ref({
+  username: '',
+  password: '',
+});
 
-const toggleUsernameTrue = () => {
-  isUsernameTrue.value = !isUsernameTrue.value;
+const login = async () => {
+  try {
+    const response = await authAPI.login(loginData.value);
+    const status = response.data.status;
+    const message = response.data.message;
+    const data = response.data.data;
+
+    console.log(status);
+    console.log(message);
+    console.log(data);
+
+    // 如果登录成功，存储 token
+    if (status === 'success') {
+      localStorage.setItem('token', data);
+      router.push('/dashboard');
+
+    } else {
+      // 处理错误消息
+      alert(message || '登录失败，请重试');
+    }
+
+  } catch (error) {
+    console.error('登录失败:', error);
+    alert('网络错误，请稍后重试');
+  }
 }
 
 </script>

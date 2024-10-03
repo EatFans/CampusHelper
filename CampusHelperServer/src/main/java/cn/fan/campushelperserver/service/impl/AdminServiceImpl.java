@@ -4,6 +4,7 @@ import cn.fan.campushelperserver.constant.consist.ResponseStatus;
 import cn.fan.campushelperserver.mapper.AdminMapper;
 import cn.fan.campushelperserver.model.dao.request.AdminLoginRequest;
 import cn.fan.campushelperserver.model.dao.request.CreateAdminRequest;
+import cn.fan.campushelperserver.model.dao.request.TokenRequest;
 import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.model.entity.Admin;
 import cn.fan.campushelperserver.service.intf.AdminService;
@@ -47,7 +48,7 @@ public class AdminServiceImpl implements AdminService {
         // 将token临时存储到redis中，设置过期时间,这里是将token作为value值缓存进入redis
         redisService.set(admin.getUuid(),token,6, TimeUnit.HOURS);
 
-        return new ApiResponse(ResponseStatus.SUCCESS,"登录成功！token过期时间为6小时");
+        return new ApiResponse(ResponseStatus.SUCCESS,"登录成功！token过期时间为6小时",token);
     }
 
     @Override
@@ -103,5 +104,15 @@ public class AdminServiceImpl implements AdminService {
         } while (isDuplicate);
 
         return uniqueUUID;
+    }
+
+    @Override
+    public ApiResponse checkToken(TokenRequest request){
+        String token = request.getToken();
+        // 验证token是否有效
+        if (redisService.valueExists(token))
+            return new ApiResponse(ResponseStatus.SUCCESS,"token令牌有效");
+        else
+            return new ApiResponse(ResponseStatus.ERROR,"token令牌已经失效");
     }
 }
