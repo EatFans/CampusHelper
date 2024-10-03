@@ -64,10 +64,6 @@ public class UniversityServiceImpl implements UniversityService {
 
     }
 
-    @Override
-    public List<University> getUniversity(){
-        return null;
-    }
 
 
     @Override

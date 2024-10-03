@@ -43,8 +43,8 @@
 
 <script setup>
 import {ref} from "vue";
-import authAPI from "@/api/admin";
 import router from "@/router";
+import adminAPI from "@/api/admin";
 
 const loginData = ref({
   username: '',
@@ -53,7 +53,7 @@ const loginData = ref({
 
 const login = async () => {
   try {
-    const response = await authAPI.login(loginData.value);
+    const response = await adminAPI.login(loginData.value);
     const status = response.data.status;
     const message = response.data.message;
     const data = response.data.data;

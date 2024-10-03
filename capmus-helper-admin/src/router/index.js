@@ -6,7 +6,7 @@ import UserManagerPage from "@/Pages/UserManagerPage.vue";
 import MemberManagerPage from "@/Pages/MemberManagerPage.vue";
 import UniversityManagerPage from "@/Pages/UniversityManagerPage.vue";
 import TaskManagerPage from "@/Pages/TaskManagerPage.vue";
-import authAPI from "@/api/admin";
+import adminAPI from "@/api/admin";
 
 
 // 创建路由
@@ -84,7 +84,7 @@ const router = createRouter({
 // 检查 token 是否有效的异步函数
 const checkToken = async (token) => {
     try {
-        const response = await authAPI.checkToken(token); // 假设您有一个 checkToken 的 API
+        const response = await adminAPI.checkToken(token); // 假设您有一个 checkToken 的 API
         const status = response.data.status;
         return status === 'success';
     } catch (error) {

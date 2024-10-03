@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
     timeout: 10000 // 超时时间
 });
 
-const authAPI = {
+const adminAPI = {
     // 登录接口
     login(credentials) {
         return axiosInstance.post('/login', credentials);
@@ -19,4 +19,4 @@ const authAPI = {
 
 };
 
-export default authAPI;
+export default adminAPI;

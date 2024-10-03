@@ -1,10 +1,8 @@
 package cn.fan.campushelperserver.controller;
 
-import cn.fan.campushelperserver.constant.consist.ResponseStatus;
 import cn.fan.campushelperserver.model.dao.request.GetUniversitiesRequest;
 import cn.fan.campushelperserver.model.dao.response.AddUniversityResponse;
 import cn.fan.campushelperserver.model.dao.request.AddUniversityRequest;
-import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.model.entity.University;
 import cn.fan.campushelperserver.service.intf.UniversityService;
 import org.springframework.beans.factory.annotation.Autowired;

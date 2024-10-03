@@ -17,7 +17,7 @@
       </thead>
       <!--表格主体-->
       <tbody>
-        <tr v-for="(item, index) in universities" :key="index">
+        <tr v-for="(item, index) in universityList" :key="index">
           <td class="university-table-body">{{item.id}}</td>
           <td class="university-table-body">{{item.university}}</td>
           <td class="university-table-body">{{item.province}}</td>
@@ -41,13 +41,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import {defineProps} from 'vue';
 
-const universities = ref([
-  { id: 1, university: '南通职业大学（本部）', province: '江苏省', city:'南通市',updatedByName:'EatFan', updatedByUuid: 'fdahfjdksahe121321312', updatedAt: '2024/9/21' },
-  { id: 2, university: '南通职业大学（钟秀校区）', province: '江苏省', city:'南通市',updatedByName:'EatFan', updatedByUuid: 'fdahfjdksahe121321312', updatedAt: '2024/9/21' },
-  { id: 3, university: '南通职业大学（海门校区）', province: '江苏省', city:'南通市',updatedByName:'EatFan', updatedByUuid: 'fdahfjdksahe121321312', updatedAt: '2024/9/21' },
-])
+
+// eslint-disable-next-line no-unused-vars
+const props = defineProps({
+  universityList: {
+    type: Array,
+    default: null
+  }
+});
+
+
 </script>
 
 
