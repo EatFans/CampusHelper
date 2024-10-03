@@ -7,16 +7,21 @@ import cn.fan.campushelperserver.model.dao.request.CreateAdminRequest;
 import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.model.entity.Admin;
 import cn.fan.campushelperserver.service.intf.AdminService;
+import cn.fan.campushelperserver.service.intf.RedisService;
+import cn.fan.campushelperserver.util.TokenEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class AdminServiceImpl implements AdminService {
     private final AdminMapper adminMapper;
+    private final RedisService redisService;
     @Autowired
-    public AdminServiceImpl(AdminMapper adminMapper){
+    public AdminServiceImpl(AdminMapper adminMapper,RedisService redisService){
         this.adminMapper = adminMapper;
+        this.redisService = redisService;
     }
 
 
@@ -37,10 +42,12 @@ public class AdminServiceImpl implements AdminService {
             return new ApiResponse(ResponseStatus.ERROR,"密码错误");
         }
 
-        // 生存一个登录令牌用于登录
-        // TODO: 待完成
+        // 生成一个登录令牌用于登录
+        String token = TokenEncryptor.generateToken(admin.getUuid());
+        // 将token临时存储到redis中，设置过期时间,这里是将token作为value值缓存进入redis
+        redisService.set(admin.getUuid(),token,6, TimeUnit.HOURS);
 
-        return new ApiResponse(ResponseStatus.SUCCESS,"");
+        return new ApiResponse(ResponseStatus.SUCCESS,"登录成功！token过期时间为6小时");
     }
 
     @Override
