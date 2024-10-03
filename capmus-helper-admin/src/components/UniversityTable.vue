@@ -112,6 +112,7 @@ const props = defineProps({
   text-align: center;
   padding-left: 10px;
   padding-right: 10px;
+  background: #b7bbbf;
   border: #b7bbbf solid 1px;
 }
 
@@ -128,7 +129,7 @@ thead, tr {
 .university-table-container {
   width: 95%;
   height: auto;
-  margin-top: 50px;
+  margin-top: 10px;
   margin-left: 20px;
   background: #fff;
 }
