@@ -5,14 +5,29 @@
         <p>添加新大学信息数据</p>
       </div>
       <div class="add-university-pop-ups-content">
+        <div class="add-university-pop-ups-item">
+          <p>名称</p>
+          <input type="text" placeholder="请输入大学名称" v-model="university">
+        </div>
+        <div class="add-university-pop-ups-item">
+          <p>省份</p>
+          <input type="text" placeholder="请输入大学所在的省份" v-model="province" >
+        </div>
+        <div class="add-university-pop-ups-item">
+          <p>城市</p>
+          <input type="text" placeholder="请输入大学所在的城市" v-model="city" >
+        </div>
 
+        <div v-show="isError" class="put-university-info-error-message">
+          <p>{{ errorMessage }}</p>
+        </div>
       </div>
       <!-- 操作按钮 -->
       <div class="add-university-pop-ups-operate-button-box">
         <div class="add-university-pop-ups-cancel-button" @click="sendIsAddUniversityPopUp">
           <p>取消</p>
         </div>
-        <div class="add-university-pop-ups-determine-button">
+        <div class="add-university-pop-ups-determine-button" @click="putNewUniversityInfo">
           <p>确定</p>
         </div>
       </div>
@@ -21,7 +36,7 @@
 </template>
 
 <script setup>
-import { defineProps} from 'vue';
+import {defineProps, ref} from 'vue';
 
 // 定义 props
 // eslint-disable-next-line no-unused-vars
@@ -40,6 +55,47 @@ const sendIsAddUniversityPopUp = () => {
   console.log("isAddUniversityPopUp", props.isAddUniversityPopUps);
 }
 
+const university = ref("");
+const province = ref("");
+const city = ref("");
+const updatedByName = ref("");
+const updatedByUuid = ref("");
+const updatedAt = ref();
+
+const isError = ref(false);
+const errorMessage = ref("");
+
+const putNewUniversityInfo = () => {
+  console.log("名称", university.value);
+  console.log("省份",province.value);
+  console.log("城市",city.value);
+  if (university.value === ""){
+    isError.value = true;
+    errorMessage.value = "学校名称不能为空！";
+    return;
+  }
+
+  if (province.value === ""){
+    isError.value = true;
+    errorMessage.value = "学校所在省份不能为空！";
+    return;
+  }
+  if (city.value === ""){
+    isError.value = true;
+    errorMessage.value = "学校所在城市不能为空！";
+    return;
+  }
+
+  const localDate = new Date();
+  updatedAt.value = localDate.toISOString();
+  console.log(updatedAt.value);
+
+  if (updatedByName.value === "" && updatedByUuid.value === ""){
+    const token = localStorage.getItem("token");
+    // TODO: 从本地获取Token，通过token来获取管理员用户名和uuid
+    console.log(token);
+  }
+}
 
 </script>
 
@@ -90,6 +146,28 @@ const sendIsAddUniversityPopUp = () => {
 
 }
 
+.add-university-pop-ups-item {
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.add-university-pop-ups-item p {
+  margin-left: 15px;
+}
+
+.add-university-pop-ups-item input {
+  margin-left: 30px;
+  width: 80%;
+  height: 40px;
+  border-radius: 5px;
+  border: #b7bbbf solid 1px;
+  padding-left: 10px;
+}
+
+
 .add-university-pop-ups-operate-button-box {
   width: 100%;
   height: 60px;
@@ -131,5 +209,18 @@ const sendIsAddUniversityPopUp = () => {
 .add-university-pop-ups-determine-button p, .add-university-pop-ups-cancel-button p{
   color: #fff;
   font-size: 14px;
+}
+
+.put-university-info-error-message {
+  height: 50px;
+  width: 96%;
+  margin: 10px auto;
+  display: flex;
+}
+
+.put-university-info-error-message p {
+  color: red;
+  font-size: 14px;
+  margin-left: 60px;
 }
 </style>
