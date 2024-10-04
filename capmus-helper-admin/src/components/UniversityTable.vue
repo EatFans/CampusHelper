@@ -29,7 +29,7 @@
             <div class="reset-university-button">
               <p>修改</p>
             </div>
-            <div class="delete-university-button">
+            <div class="delete-university-button" @click="deleteUniversity(item)">
               <p>删除</p>
             </div>
           </td>
@@ -42,6 +42,7 @@
 
 <script setup>
 import {defineProps} from 'vue';
+import universityAPI from "@/api/university";
 
 
 // eslint-disable-next-line no-unused-vars
@@ -52,6 +53,17 @@ const props = defineProps({
   }
 });
 
+const deleteUniversity = async (data) => {
+  const response = await universityAPI.deleteUniversity(data);
+  const status = response.data.status;
+  console.log(response.data);
+  console.log(status);
+  if (status === 'success'){
+    console.log("成功删除！");
+    window.location.reload();
+  }
+
+}
 
 </script>
 
@@ -70,6 +82,10 @@ const props = defineProps({
   border-radius: 6px;
 }
 
+.reset-university-button:hover {
+  background: #4f9fec;
+}
+
 .delete-university-button {
   width: 45px;
   height: 30px;
@@ -81,6 +97,10 @@ const props = defineProps({
   color: white;
   font-size: 12px;
   border-radius: 6px;
+}
+
+.delete-university-button:hover{
+  background: #e36969;
 }
 
 .university-table-body-button {

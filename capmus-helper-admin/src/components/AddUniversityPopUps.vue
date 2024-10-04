@@ -121,6 +121,11 @@ const addNewUniversity = async () => {
   if (status === "success") {
     isSuccess.value = true;
     successMessage.value = message;
+    setTimeout(() => {
+      isSuccess.value = false;
+      emit("isAddUniversityPopUp", !props.isAddUniversityPopUps);
+      window.location.reload();
+    },500);
   } else {
     isError.value = true;
     errorMessage.value = message;

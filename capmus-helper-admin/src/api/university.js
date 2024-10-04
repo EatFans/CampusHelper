@@ -20,6 +20,10 @@ const universityAPI = {
     // 获取所有已经支持的大学的数量
     getUniversityAmount(){
         return axiosInstance.get('/university/getUniversityAmount');
+    },
+    // 删除大学信息数据
+    deleteUniversity(data) {
+        return axiosInstance.post('/university/delete', data);
     }
 
 };

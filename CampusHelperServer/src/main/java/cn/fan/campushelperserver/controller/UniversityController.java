@@ -54,4 +54,9 @@ public class UniversityController {
     public int getUniversityAmount(){
         return universityService.getUniversityAmount();
     }
+
+    @PostMapping("/delete")
+    public ResponseEntity<?> deleteUniversity(@RequestBody University university){
+        return ResponseEntity.ok(universityService.deleteUniversity(university));
+    }
 }

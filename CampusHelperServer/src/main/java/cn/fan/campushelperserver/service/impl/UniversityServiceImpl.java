@@ -4,10 +4,12 @@ import cn.fan.campushelperserver.constant.consist.ResponseStatus;
 import cn.fan.campushelperserver.mapper.UniversityMapper;
 import cn.fan.campushelperserver.model.dao.request.AddUniversityRequest;
 import cn.fan.campushelperserver.model.dao.response.AddUniversityResponse;
+import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.model.entity.University;
 import cn.fan.campushelperserver.service.intf.UniversityService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.google.protobuf.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -76,5 +78,24 @@ public class UniversityServiceImpl implements UniversityService {
     @Override
     public int getUniversityAmount() {
         return universityMapper.getUniversityAmount();
+    }
+
+    public ApiResponse deleteUniversity(University university){
+        // 检查这个大学信息是否已经存在于数据库中
+        if (!universityMapper.checkUniversityExists(university.getUniversity())){
+            return new ApiResponse(ResponseStatus.SUCCESS,"该大学信息数据并未添加过！无法删除");
+        }
+
+        // 从数据库中删除该条数据库
+        universityMapper.deleteUniversity(university.getId());
+        if (universityMapper.getUniversityAmount() > 0){
+            // 更新修改删除后该数据表的自增键的值
+            universityMapper.adjustId(university.getId());
+            int maxId = universityMapper.findMaxId();
+            universityMapper.resetAutoIncrement(maxId + 1);
+        } else {
+            universityMapper.resetAutoIncrement(1);
+        }
+        return new ApiResponse(ResponseStatus.SUCCESS,"删除大学信息数据成功");
     }
 }

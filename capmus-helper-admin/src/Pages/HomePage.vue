@@ -14,7 +14,7 @@
           <div class="data-display-container">
             <!--用户数量-->
             <div class="data-display-item">
-              <h1>用户数量</h1>
+              <h1>大学数量：{{universityAmount}}</h1>
             </div>
           </div>
 
@@ -25,16 +25,18 @@
 </template>
 
 <script setup>
-import {computed, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 
 import SideBar from "@/components/SideBar.vue";
 import HeaderBar from "@/components/HeaderBar.vue";
+import universityAPI from "@/api/university";
 
 // 定义一个状态来控制侧边栏的展开与折叠
 const isSidebarOpen = ref(true);
-
 const pageIndex = ref(0);
 
+
+const universityAmount = ref();
 
 
 // 定义页面路径显示的列表
@@ -58,7 +60,14 @@ const toggleSidebar = (value) => {
   isSidebarOpen.value = value;
 };
 
+onMounted(() =>{
+  fetchUniversityAmount();
+});
 
+const fetchUniversityAmount = async () => {
+  const response = await universityAPI.getUniversityAmount();
+  universityAmount.value = response.data;
+}
 
 </script>
 
