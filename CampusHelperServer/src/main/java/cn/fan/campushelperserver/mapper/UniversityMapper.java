@@ -30,4 +30,6 @@ public interface UniversityMapper {
     void insertUniversity(University university);
 
     List<University> findAll();
+
+    int getUniversityAmount();
 }

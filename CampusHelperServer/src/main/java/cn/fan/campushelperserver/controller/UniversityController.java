@@ -50,4 +50,8 @@ public class UniversityController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/getUniversityAmount")
+    public int getUniversityAmount(){
+        return universityService.getUniversityAmount();
+    }
 }

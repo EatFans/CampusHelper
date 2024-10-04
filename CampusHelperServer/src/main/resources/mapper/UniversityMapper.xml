@@ -20,4 +20,8 @@
     <select id="findAll" resultType="cn.fan.campushelperserver.model.entity.University">
         SELECT * FROM universities
     </select>
+
+    <select id="getUniversityAmount" resultType="int">
+        SELECT COUNT(*) FROM universities
+    </select>
 </mapper>

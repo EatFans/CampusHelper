@@ -47,6 +47,11 @@ const sidebarList = [
     link: '/user-manager',
     icon: 'bx bx-group'
   },
+  // {
+  //   text: '校园墙管理',
+  //   link: '/doc',
+  //   icon: 'bx bx-spreadsheet'
+  // },
   {
     text: '订单管理',
     link: '/task-manager',
@@ -55,7 +60,7 @@ const sidebarList = [
   {
     text: '学校管理',
     link: '/university-manager',
-    icon: 'bx bx-buildings'
+    icon: 'bx bxs-school'
   },
   {
     text: '成员管理',

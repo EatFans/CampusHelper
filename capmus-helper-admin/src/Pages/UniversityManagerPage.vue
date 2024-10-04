@@ -17,9 +17,14 @@
             <div class="last-page-button" @click="goToLastPage">
               <p>上一页</p>
             </div>
-
             <div class="next-page-button" @click="goToNextPage">
               <p>下一页</p>
+            </div>
+            <div class="total-page-amount">
+              <p>共{{pageAmount}}页</p>
+            </div>
+            <div class="current-page-index">
+              <p>当前在{{currentPage}}页</p>
             </div>
           </div>
         </div>
@@ -237,6 +242,13 @@ const goToLastPage = () => {
 
 .last-page-button p,.next-page-button p {
   font-size: 12px;
+}
+
+.total-page-amount,.current-page-index {
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 

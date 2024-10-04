@@ -2,6 +2,7 @@ package cn.fan.campushelperserver.service.intf;
 
 import cn.fan.campushelperserver.model.dao.request.AddUniversityRequest;
 import cn.fan.campushelperserver.model.dao.response.AddUniversityResponse;
+import cn.fan.campushelperserver.model.dao.response.ApiResponse;
 import cn.fan.campushelperserver.model.entity.University;
 import com.github.pagehelper.Page;
 
@@ -15,4 +16,6 @@ public interface UniversityService {
 
     AddUniversityResponse addUniversity(AddUniversityRequest addUniversityRequest);
     Page<University> getUniversities(int page, int size);
+
+    int getUniversityAmount();
 }

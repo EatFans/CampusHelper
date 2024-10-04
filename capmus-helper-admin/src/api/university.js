@@ -16,6 +16,10 @@ const universityAPI = {
     // 添加新的大学信息数据
     addNewUniversityData(credentials) {
         return axiosInstance.post('/university/add', credentials);
+    },
+    // 获取所有已经支持的大学的数量
+    getUniversityAmount(){
+        return axiosInstance.get('/university/getUniversityAmount');
     }
 
 };

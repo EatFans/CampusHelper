@@ -72,4 +72,9 @@ public class UniversityServiceImpl implements UniversityService {
         List<University> universityList = universityMapper.findAll();
         return (Page<University>) universityList;
     }
+
+    @Override
+    public int getUniversityAmount() {
+        return universityMapper.getUniversityAmount();
+    }
 }
