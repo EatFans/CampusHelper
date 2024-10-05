@@ -32,4 +32,24 @@ public interface UniversityMapper {
     List<University> findAll();
 
     int getUniversityAmount();
+
+    /**
+     * 删除大学
+     * @param id 大学id编号
+     */
+    void deleteUniversity(int id);
+
+    /**
+     * 更新自增键
+     * @param id id
+     */
+    void adjustId(int id);
+
+    /**
+     * 获取最大的id
+     * @return 返回id
+     */
+    int findMaxId();
+
+    void resetAutoIncrement(int newAutoIncrementValue);
 }

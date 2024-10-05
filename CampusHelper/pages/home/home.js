@@ -24,6 +24,8 @@ Page({
     }
   },
 
+  
+
 
   /**
    * 加载用户的大学数据信息
@@ -74,8 +76,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    // 获取用户的大学信息
-    
+    this.loadSupportedUniversitiesData();
 
   },
 

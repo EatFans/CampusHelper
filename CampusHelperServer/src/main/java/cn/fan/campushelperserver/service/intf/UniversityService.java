@@ -18,4 +18,6 @@ public interface UniversityService {
     Page<University> getUniversities(int page, int size);
 
     int getUniversityAmount();
+
+    ApiResponse deleteUniversity(University university);
 }

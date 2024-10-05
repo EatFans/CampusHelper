@@ -24,4 +24,20 @@
     <select id="getUniversityAmount" resultType="int">
         SELECT COUNT(*) FROM universities
     </select>
+
+    <delete id="deleteUniversity" parameterType="int">
+        DELETE FROM universities WHERE id = #{id}
+    </delete>
+
+    <update id="adjustId" parameterType="int">
+        UPDATE universities SET id = id - 1 WHERE id > #{id}
+    </update>
+
+    <select id="findMaxId" resultType="int">
+        SELECT MAX(id) FROM universities
+    </select>
+
+    <update id="resetAutoIncrement" parameterType="int">
+        ALTER TABLE universities AUTO_INCREMENT = #{newAutoIncrementValue}
+    </update>
 </mapper>

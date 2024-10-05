@@ -1,6 +1,15 @@
 <scroll-view>
   <nav-bar title="校园墙" hasBack="{{true}}"/>
+  <!--校园墙页面主要容器-->
   <view class="main-container">
-  
+    <view class="campus-walls-post-item">
+      <view class="campus-walls-post-title">
+        <image class="campus-walls-post-avatar" src="{{postData.avatarUrl}}" mode="aspectFill"/>
+        <p class="campus-walls-post-userNickName">{{postData.userNickName}}</p>
+      </view>
+      <view class="campus-walls-post-content">
+        <p>{{postData.postContent}}</p>
+      </view>
+    </view>
   </view>
 </scroll-view>

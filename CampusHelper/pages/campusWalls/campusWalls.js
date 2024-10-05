@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    postData: {
+      avatarUrl: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0',
+      userNickName: 'EatFan',
+      postContent: '人生不向花前醉，花笑人生也是呆'
+    }
   },
 
   /**
