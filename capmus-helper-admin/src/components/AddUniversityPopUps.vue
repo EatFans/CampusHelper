@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-import {defineProps, ref} from 'vue';
+import {defineProps, onMounted, ref} from 'vue';
 import adminAPI from "@/api/admin";
 import universityAPI from "@/api/university";
 
@@ -54,6 +54,12 @@ const props = defineProps({
 
 // eslint-disable-next-line no-undef
 const emit = defineEmits(['isAddUniversityPopUp']);
+
+onMounted(() =>{
+  // 检查token是否有效
+  const token = sessionStorage.getItem("token");
+  console.log(token);
+});
 
 const sendIsAddUniversityPopUp = () => {
   emit("isAddUniversityPopUp", !props.isAddUniversityPopUps);
@@ -73,6 +79,10 @@ const errorMessage = ref("");
 const isSuccess = ref(false);
 const successMessage = ref("");
 
+/**
+ * 添加推送一个新大学信息
+ * @returns {Promise<void>}
+ */
 const putNewUniversityInfo = async () => {
   if (university.value === "") {
     isError.value = true;
@@ -97,7 +107,7 @@ const putNewUniversityInfo = async () => {
     const admin = await getAdminData(token);
     updatedByName.value = admin.nickName;
     updatedByUuid.value = admin.uuid;
-    addNewUniversity();
+    await addNewUniversity();
 
   }
 }
@@ -173,6 +183,7 @@ const getAdminData = async (token) => {
   width:900px;
   height: 900px;
   background: #fff;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
 }

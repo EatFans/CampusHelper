@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <UniversityTable class="university-table" :universityList="universityList" />
+        <UniversityTable class="university-table" :universityList="universityList" @isDeleteUniversityPopUp="openIsDeleteUniversityPopUp"/>
 
       </div>
     </div>
@@ -38,6 +38,8 @@
   </div>
   <!-- 添加大学弹窗 -->
   <AddUniversityPopUps :isAddUniversityPopUps="isAddUniversityPopUp" @isAddUniversityPopUp="handlerAddUniversityPopUp" />
+  <!--确定删除大学信息弹窗-->
+  <IsDeleteUniversityPopUps :university="currentDeleteUniversity" :isDeleteUniversityPopUps="isIsDeleteUniversityPopUp" @isDeleteUniversityPopUp="handlerIsDeleteUniversityPopUps"/>
 </template>
 
 <script setup>
@@ -48,11 +50,14 @@ import HeaderBar from "@/components/HeaderBar.vue";
 import UniversityTable from "@/components/UniversityTable.vue";
 import universityAPI from "@/api/university";
 import AddUniversityPopUps from "@/components/AddUniversityPopUps.vue";
+import IsDeleteUniversityPopUps from "@/components/IsDeleteUniversityPopUps.vue";
 
 // 定义一个状态来控制侧边栏的展开与折叠
 const isSidebarOpen = ref(true);
 // 定义一个状态来控制添加大学弹窗开启与关闭
 const isAddUniversityPopUp = ref(false);
+// 定义一个状态来控制确定删除大学信息弹出开启与关闭
+const isIsDeleteUniversityPopUp = ref(false);
 
 const pageIndex = ref(4);
 
@@ -63,6 +68,26 @@ const currentPage = ref(1);  //当前选择的页面
 const size = ref(20);    // 一页多少条数据
 const pageAmount = ref(0);   // 总共多少页
 
+// 被选定准备删除的大学
+const currentDeleteUniversity = ref();
+
+/**
+ * 打开是否删除大学弹窗
+ * @type {{}}
+ */
+const openIsDeleteUniversityPopUp = (data) => {
+  console.log(data);
+  isIsDeleteUniversityPopUp.value = data.isIsDeleteUniversityPopUpsOpen;
+  currentDeleteUniversity.value = data.university;
+  console.log("currentDeleteUniversity", currentDeleteUniversity);
+}
+
+/**
+ * 监听是否删除大学信息弹窗开启与关闭
+ */
+const handlerIsDeleteUniversityPopUps = (value) => {
+  isIsDeleteUniversityPopUp.value = value;
+}
 
 /**
  * 切换添加大学弹窗开启与关闭

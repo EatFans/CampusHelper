@@ -8,8 +8,6 @@
       <div class="main-content">
         <HeaderBar @sidebarValue="toggleSidebar" :pagePathList="pagePathList" />
 
-        <UniversityTable class="university-table" />
-
       </div>
     </div>
   </div>
@@ -20,7 +18,6 @@ import {computed, ref} from "vue";
 
 import SideBar from "@/components/SideBar.vue";
 import HeaderBar from "@/components/HeaderBar.vue";
-import UniversityTable from "@/components/UniversityTable.vue";
 
 // 定义一个状态来控制侧边栏的展开与折叠
 const isSidebarOpen = ref(true);

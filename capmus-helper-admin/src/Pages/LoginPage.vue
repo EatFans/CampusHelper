@@ -42,13 +42,43 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import router from "@/router";
 import adminAPI from "@/api/admin";
 
 const loginData = ref({
   username: '',
   password: '',
+});
+
+
+// 检查 token 是否有效的异步函数
+const checkToken = async (token) => {
+  try {
+    const response = await adminAPI.checkToken(token); // 假设您有一个 checkToken 的 API
+    const status = response.data.status;
+    return status === 'success';
+  } catch (error) {
+    return false;
+  }
+};
+
+onMounted(() => {
+  const token = localStorage.getItem("token");
+
+  if (token){
+    checkToken({token}).then(isValid => {
+      if (isValid) {
+        console.log('token有效，直接跳转到/dashboard');
+        router.push("/dashboard");
+      } else {
+        console.log("token无效，请重新登录")
+      }
+
+    });
+  } else {
+    console.log("并不存在token");
+  }
 });
 
 const login = async () => {

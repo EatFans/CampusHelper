@@ -29,7 +29,8 @@
             <div class="reset-university-button">
               <p>修改</p>
             </div>
-            <div class="delete-university-button" @click="deleteUniversity(item)">
+            <!--TODO: 点击删除后，将要删除大学的数据以及是否打开确定删除弹窗的标识传给父类组件中，-->
+            <div class="delete-university-button" @click="openIsDeleteUniversityPopUp(item)">
               <p>删除</p>
             </div>
           </td>
@@ -42,7 +43,7 @@
 
 <script setup>
 import {defineProps} from 'vue';
-import universityAPI from "@/api/university";
+// import universityAPI from "@/api/university";
 
 
 // eslint-disable-next-line no-unused-vars
@@ -53,17 +54,18 @@ const props = defineProps({
   }
 });
 
-const deleteUniversity = async (data) => {
-  const response = await universityAPI.deleteUniversity(data);
-  const status = response.data.status;
-  console.log(response.data);
-  console.log(status);
-  if (status === 'success'){
-    console.log("成功删除！");
-    window.location.reload();
-  }
+// eslint-disable-next-line no-undef
+const emit = defineEmits(["isDeleteUniversityPopUp"]);
 
+
+const openIsDeleteUniversityPopUp = (university) => {
+  const data = {
+    isIsDeleteUniversityPopUpsOpen: true,
+    university: university
+  }
+  emit("isDeleteUniversityPopUp", data);
 }
+
 
 </script>
 
