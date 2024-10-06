@@ -1,6 +1,9 @@
 <template>
   <div class="is-delete-university-pop-ups" v-show="isDeleteUniversityPopUps">
     <div class="is-delete-university-pop-ups-container">
+      <div class="is-delete-university-pop-ups-title">
+        <p>确定要删除该大学信息吗？</p>
+      </div>
 
       <div class="is-delete-university-pop-ups-operate-button-box">
         <div class="is-delete-university-pop-ups-cancel-button" @click="sendIsDeleteUniversityPopUp">
@@ -70,7 +73,7 @@ const deleteUniversity = async () => {
 .is-delete-university-pop-ups-container {
   margin-top: 15%;
   width: 400px;
-  height: 250px;
+  height: 200px;
   border-radius: 10px;
   background: #fff;
 }
@@ -78,7 +81,6 @@ const deleteUniversity = async () => {
 .is-delete-university-pop-ups-operate-button-box {
   width: 100%;
   height: 80px;
-  border: red solid 1px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +88,7 @@ const deleteUniversity = async () => {
 
 .is-delete-university-pop-ups-cancel-button {
   width: 80px;
-  height: 30px;
+  height: 25px;
   border-radius: 6px;
   background: #f44847;
   display: flex;
@@ -113,5 +115,13 @@ const deleteUniversity = async () => {
 }
 .is-delete-university-pop-ups-determine-button:hover {
   background: #4c9ce8;
+}
+
+.is-delete-university-pop-ups-title {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

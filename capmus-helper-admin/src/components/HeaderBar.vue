@@ -32,6 +32,7 @@ const sendIsSideBarOpen = () => {
   isSidebarOpen.value = !isSidebarOpen.value;
   emit("sidebarValue", isSidebarOpen.value);
   console.log("sidebarValue", isSidebarOpen.value);
+  localStorage.setItem("isSidebarOpen", isSidebarOpen.value);
 }
 
 const goToPage = (url) => {

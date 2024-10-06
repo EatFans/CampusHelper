@@ -29,7 +29,6 @@
             <div class="reset-university-button">
               <p>修改</p>
             </div>
-            <!--TODO: 点击删除后，将要删除大学的数据以及是否打开确定删除弹窗的标识传给父类组件中，-->
             <div class="delete-university-button" @click="openIsDeleteUniversityPopUp(item)">
               <p>删除</p>
             </div>
