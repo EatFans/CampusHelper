@@ -16,6 +16,14 @@
             <div class="data-display-item">
               <h1>大学数量：{{universityAmount}}</h1>
             </div>
+
+            <div class="data-display-item">
+              <h1>用户数量：0{{}}</h1>
+            </div>
+
+            <div class="data-display-item">
+              <h1>收入：0.00{{}}</h1>
+            </div>
           </div>
 
         </div>

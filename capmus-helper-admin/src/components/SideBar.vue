@@ -38,8 +38,8 @@ const sidebarList = [
     icon: 'bx bx-tachometer'
   },
   {
-    text: '使用文档',
-    link: '/doc',
+    text: '日志记录',
+    link: '/log',
     icon: 'bx bx-file'
   },
   {

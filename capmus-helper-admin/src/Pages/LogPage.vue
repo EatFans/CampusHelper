@@ -33,8 +33,8 @@ const pagePathList = ref([
     url: '/dashboard'
   },
   {
-    title: '使用文档',
-    url: '/doc'
+    title: '日志记录',
+    url: '/log'
   }
 ]);
 

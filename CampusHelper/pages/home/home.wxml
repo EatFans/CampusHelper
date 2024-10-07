@@ -13,9 +13,6 @@
   </picker>
 </view>
 
-
-
-
 <!--顶部区域部分-->
 <view class="home-page-header">
   <!--轮播图-->

@@ -5,10 +5,21 @@
     <view class="campus-walls-post-item">
       <view class="campus-walls-post-title">
         <image class="campus-walls-post-avatar" src="{{postData.avatarUrl}}" mode="aspectFill"/>
-        <p class="campus-walls-post-userNickName">{{postData.userNickName}}</p>
+        <view class="campus-walls-post-info-box">
+          <p class="campus-walls-post-userNickName">{{postData.userNickName}}</p>
+          <p class="campus-walls-post-post-date">{{}}3小时前</p>
+        </view>
       </view>
+      <!--帖子主要内容-->
       <view class="campus-walls-post-content">
         <p>{{postData.postContent}}</p>
+      </view>
+      <!--操作按钮-->
+      <view class="campus-walls-post-operate-button-box">
+        <view class="campus-walls-post-like-button">
+          <image class="campus-walls-post-like-button-icon" src="../../images/campusWalls/like.png" mode="aspectFill" />
+        </view>
+        
       </view>
     </view>
   </view>

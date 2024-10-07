@@ -19,25 +19,25 @@ Component({
       {
         id: 1,
         icon: '../../images/homeMenuIcon/pick_up_the_courier.png',
-        text: '待定',
+        text: '校园墙',
         link: '/pages/campusWalls/campusWalls'
       },
       {
         id: 2,
         icon: '../../images/homeMenuIcon/takeaway.png',
-        text: '待定',
+        text: '二手市场',
         link: '',
       },
       {
         id: 3,
         icon: '../../images/homeMenuIcon/lost_and_found.png',
-        text: '待定',
+        text: '失物招领',
         link: ''
       },
       {
         id: 4,
         icon: '../../images/homeMenuIcon/versatile_quest.png',
-        text: '待定',
+        text: '衣物清洗',
         link: ''
       },
       {

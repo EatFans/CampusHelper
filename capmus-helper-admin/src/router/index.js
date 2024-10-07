@@ -1,12 +1,12 @@
 import { createRouter,createWebHistory } from "vue-router";
 import HomePage from "@/Pages/HomePage.vue";
 import LoginPage from "@/Pages/LoginPage.vue";
-import DocPage from "@/Pages/DocPage.vue";
 import UserManagerPage from "@/Pages/UserManagerPage.vue";
 import MemberManagerPage from "@/Pages/MemberManagerPage.vue";
 import UniversityManagerPage from "@/Pages/UniversityManagerPage.vue";
 import TaskManagerPage from "@/Pages/TaskManagerPage.vue";
 import adminAPI from "@/api/admin";
+import LogPage from "@/Pages/LogPage.vue";
 
 
 // 创建路由
@@ -30,11 +30,11 @@ const router = createRouter({
             }
         },
         {
-            path:'/doc',
-            name: 'DocPage',
-            component: DocPage,
+            path:'/log',
+            name: 'LogPage',
+            component: LogPage,
             meta: {
-                title: '使用文档'
+                title: '日志记录'
             }
         },
         {
