@@ -8,7 +8,7 @@
       <div class="main-content">
         <HeaderBar @sidebarValue="toggleSidebar" :pagePathList="pagePathList" />
 
-
+        <UserTable class="user-table"  />
       </div>
     </div>
   </div>
@@ -16,7 +16,7 @@
 
 <script setup>
 import {computed, ref} from "vue";
-
+import UserTable from "@/components/tables/UserTable.vue";
 import SideBar from "@/components/SideBar.vue";
 import HeaderBar from "@/components/HeaderBar.vue";
 
@@ -95,8 +95,4 @@ const toggleSidebar = (value) => {
   margin-left: 50px;
 }
 
-.university-table {
-  margin-top: 100px;
-  margin-left: 20px;
-}
 </style>

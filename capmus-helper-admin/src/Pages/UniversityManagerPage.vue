@@ -47,7 +47,7 @@ import {computed, onMounted, ref} from "vue";
 
 import SideBar from "@/components/SideBar.vue";
 import HeaderBar from "@/components/HeaderBar.vue";
-import UniversityTable from "@/components/UniversityTable.vue";
+import UniversityTable from "@/components/tables/UniversityTable.vue";
 import universityAPI from "@/api/university";
 import AddUniversityPopUps from "@/components/AddUniversityPopUps.vue";
 import IsDeleteUniversityPopUps from "@/components/IsDeleteUniversityPopUps.vue";
